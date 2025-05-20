@@ -1,0 +1,79 @@
+.title {
+    font-family: Arial, sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding-bottom: 20px;
+}
+
+#search {
+    width: 50%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+#search-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    border: 2px solid black;
+    cursor: pointer;
+    justify-content: center;
+}
+
+#search-btn:active {
+    background-color: grey;
+}
+
+#search:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.guesses table {
+    width: 90%;
+    margin: 0 auto;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.guess-row {
+    position: relative;
+    outline: 1px solid black;
+    border-radius: 10px;
+    padding-top: 24px;
+    height: 50px;
+}
+
+.guesses th {
+    text-align: center;
+}
+
+.guess-row td {
+    text-align: center;
+    padding: 8px 12px;
+}
+
+.guess-row td:first-child::before {
+    content: attr(data-team);
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 0 6px;
+    font-weight: bold;
+    pointer-events: none;
+}
