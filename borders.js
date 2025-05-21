@@ -47,5 +47,5 @@ window.borders = {
     "WV": ["KY", "MD", "OH", "PA", "VA"],
     "WI": ["IL", "IA", "MI", "MN"],
     "WY": ["CO", "ID", "MT", "NE", "SD", "UT"],
-    "ON": ["MI", "NY", "PA"]
+    "ON": []
 };
