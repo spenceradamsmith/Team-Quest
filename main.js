@@ -17,6 +17,8 @@ let incorrectFilters = {
     sport: new Set(),
 };
 
+let incorrectTeams = new Set();
+
 startDailyGame();
 
 function toggleMode() {
@@ -41,6 +43,16 @@ function toggleMode() {
 
 function startRandomGame() {
     guesses = 0;
+    guessedTeams.clear();
+    correctFilters = {
+        league: null,
+        sport: null,
+    };
+    incorrectFilters = {
+        league: new Set(),
+        sport: new Set(),
+    };
+    filterSuggestions();
     answer = teams[Math.floor(Math.random() * teams.length)];
     clearGuesses();
 }
@@ -67,8 +79,17 @@ function seededRandom(seed) {
 
 function startDailyGame() {
     guesses = 0;
+    guessedTeams.clear();
+    correctFilters = {
+        league: null,
+        sport: null,
+    };
+    incorrectFilters = {
+        league: new Set(),
+        sport: new Set(),
+    };
+    filterSuggestions();
     clearGuesses();
-
     const todayET = getEasternDate();
     const seed = todayET.year * 10000 + todayET.month * 100 + todayET.day;
     const rngIndex = seededRandom(seed) % teams.length;
@@ -132,9 +153,16 @@ function filterSuggestions() {
     datalist.innerHTML = "";
 
     const filtered = teams.filter(team => {
+        if (guessedTeams.has(team.name.toLowerCase())) {
+            return false;
+        }
         for (let field of ["league", "sport"]) {
-            if (correctFilters[field] && team[field] !== correctFilters[field]) return false;
-            if (incorrectFilters[field].has(team[field])) return false;
+            if (correctFilters[field] && team[field] !== correctFilters[field]) {
+                return false;
+            }
+            if (incorrectFilters[field].has(team[field])) {
+                return false;
+            }
         }
         return true;
     });
