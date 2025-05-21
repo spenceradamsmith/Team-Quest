@@ -69,6 +69,20 @@ body {
     border-color: black;
 }
 
+.guess-box.colors {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.color-circle {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+}
+
 .guess-box.green {
     background-color: #6aaa64;
     color: white;
@@ -87,6 +101,12 @@ body {
 .guess-box.placeholder {
     background-color: #e0e0e0;
     color: transparent;
+}
+
+.team-name-box.placeholder {
+    background-color: #e0e0e0;
+    color: black;
+    font-size: 16px;
 }
 
 input {
