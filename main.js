@@ -1,36 +1,103 @@
 const teams = window.teams;
 const borders = window.borders;
 
+let isRandomMode = false;
 let guesses = 0;
 const maxGuesses = 8;
+let gotCorrect = false;
+let gotWrong = false;
 
-// const todayET = getEasternDate();
-// const seed = todayET.year * 10000 + todayET.month * 100 + todayET.day;
-// const rngIndex = seededRandom(seed) % teams.length;
-// const answer = teams[rngIndex]; 
+startDailyGame();
 
-// function getEasternDate() {
-//     const now = new Date();
-//     const formatter = new Intl.DateTimeFormat('en-US', {
-//         timeZone: 'America/New_York',
-//         year: 'numeric',
-//         month: '2-digit',
-//         day: '2-digit'
-//     });
-//     const parts = formatter.formatToParts(now);
-//     const year = parseInt(parts.find(p => p.type === 'year').value);
-//     const month = parseInt(parts.find(p => p.type === 'month').value);
-//     const day = parseInt(parts.find(p => p.type === 'day').value);
-//     return { year, month, day };
-// }
+function toggleMode() {
+    isRandomMode = !isRandomMode;
 
-// function seededRandom(seed) {
-//     let x = Math.sin(seed) * 10000;
-//     return Math.floor((x - Math.floor(x)) * 1000000);
-// }
+    const modeText = document.getElementById('mode-text');
+    const modeIcon = document.getElementById('mode-icon');
+    const randomizeContainer = document.getElementById('randomize-container');
 
+    if (isRandomMode) {
+        modeText.textContent = "Play Daily";
+        modeIcon.src = "https://icons.veryicon.com/png/o/miscellaneous/face-monochrome-icon/calendar-249.png";
+        randomizeContainer.style.display = "flex";
+        startRandomGame();
+    } else {
+        modeText.textContent = "Play More";
+        modeIcon.src = "https://cdn-icons-png.flaticon.com/128/3114/3114904.png";
+        randomizeContainer.style.display = "none";
+        startDailyGame();
+    }
+}
 
-const answer = teams[Math.floor(Math.random() * teams.length)];
+function startRandomGame() {
+    guesses = 0;
+    answer = teams[Math.floor(Math.random() * teams.length)];
+    clearGuesses();
+}
+
+function getEasternDate() {
+    const now = new Date();
+    const formatter = new Intl.DateTimeFormat('en-US', {
+        timeZone: 'America/New_York',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+    });
+    const parts = formatter.formatToParts(now);
+    const year = parseInt(parts.find(p => p.type === 'year').value);
+    const month = parseInt(parts.find(p => p.type === 'month').value);
+    const day = parseInt(parts.find(p => p.type === 'day').value);
+    return { year, month, day };
+}
+
+function seededRandom(seed) {
+    let x = Math.sin(seed) * 10000;
+    return Math.floor((x - Math.floor(x)) * 1000000);
+}
+
+function startDailyGame() {
+    guesses = 0;
+    clearGuesses();
+
+    const todayET = getEasternDate();
+    const seed = todayET.year * 10000 + todayET.month * 100 + todayET.day;
+    const rngIndex = seededRandom(seed) % teams.length;
+    answer = teams[rngIndex]; 
+}
+
+function clearGuesses() {
+    document.getElementById("result").textContent = "";
+    document.getElementById("team-input").value = "";
+    gotCorrect = false;
+    gotWrong = false;
+    const guessContainers = document.querySelectorAll(".guess-row-container");
+    guessContainers.forEach(container => {
+        const teamNameBox = container.querySelector(".team-name-box");
+        const guessBoxes = container.querySelectorAll(".guess-box");
+
+        teamNameBox.textContent = teamNameBox.classList.contains("placeholder")
+            ? teamNameBox.textContent
+            : "Guess";
+
+        teamNameBox.classList.add("placeholder");
+
+        guessBoxes.forEach(box => {
+            box.className = "guess-box placeholder";
+            box.textContent = "";
+            box.innerHTML = "";
+        });
+    });
+}
+
+function randomizeGame() {
+    if (!isRandomMode) {
+        return;
+    }
+
+    answer = teams[Math.floor(Math.random() * teams.length)];
+    guesses = 0;
+    clearGuesses();
+}
 
 const colorMap = {
   "Red": "#FF0000",
@@ -59,6 +126,12 @@ function submitGuess() {
     if (guesses >= maxGuesses) {
         return;
     }
+
+    if (gotCorrect) {
+        alert("You already got it correct!");
+        return;
+    }
+
     const input = document.getElementById("team-input").value.trim();
     const team = teams.find(t => t.name.toLowerCase() === input.toLowerCase());
     if (!team) {
@@ -135,8 +208,11 @@ function submitGuess() {
     document.getElementById("team-input").value = "";
 
     if (team.name === answer.name) {
+        gotCorrect = true;
         document.getElementById("result").textContent = `You got it in ${guesses} guesses!`;
     } else if (guesses === maxGuesses) {
+        gotWrong = true;
         document.getElementById("result").textContent = `Game over! It was the ${answer.name}.`;
     }
+
 }
