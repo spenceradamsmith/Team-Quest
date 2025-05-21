@@ -1,14 +1,14 @@
 window.teams = [
   {
-    "name": "Atlanta Hawks",
-    "state": "GA",
-    "colors": "Red/Yellow",
-    "titles": 1,
-    "lastTitle": 1958,
+    "name": "New York Knicks",
+    "state": "NY",
+    "colors": "Blue/Orange",
+    "titles": 2,
+    "lastTitle": 1973,
     "league": "NBA",
     "conference": "Eastern",
     "sport": "Basketball",
-    "logo": "https://cdn.nba.com/logos/nba/1610612737/primary/L/logo.svg"
+    "logo": "https://cdn.nba.com/logos/nba/1610612752/primary/L/logo.svg"
   },
   {
     "name": "Boston Celtics",
@@ -64,6 +64,17 @@ window.teams = [
     "conference": "Eastern",
     "sport": "Basketball",
     "logo": "https://cdn.nba.com/logos/nba/1610612739/primary/L/logo.svg"
+  },
+  {
+    "name": "Atlanta Hawks",
+    "state": "GA",
+    "colors": "Red/Yellow",
+    "titles": 1,
+    "lastTitle": 1958,
+    "league": "NBA",
+    "conference": "Eastern",
+    "sport": "Basketball",
+    "logo": "https://cdn.nba.com/logos/nba/1610612737/primary/L/logo.svg"
   },
   {
     "name": "Dallas Mavericks",
@@ -207,17 +218,6 @@ window.teams = [
     "conference": "Western",
     "sport": "Basketball",
     "logo": "https://cdn.nba.com/logos/nba/1610612740/primary/L/logo.svg"
-  },
-  {
-    "name": "New York Knicks",
-    "state": "NY",
-    "colors": "Blue/Orange",
-    "titles": 2,
-    "lastTitle": 1973,
-    "league": "NBA",
-    "conference": "Eastern",
-    "sport": "Basketball",
-    "logo": "https://cdn.nba.com/logos/nba/1610612752/primary/L/logo.svg"
   },
   {
     "name": "Oklahoma City Thunder",

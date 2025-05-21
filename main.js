@@ -61,6 +61,9 @@ function submitGuess() {
             const circle2 = document.createElement("span");
             circle2.classList.add("color-circle");
             circle2.style.backgroundColor = colorMap[color2] || "#C0C0C0";
+
+            box.appendChild(circle1);
+            box.appendChild(circle2);
         } else {
             box.textContent = team[field];
         }
@@ -87,17 +90,15 @@ function submitGuess() {
             }
         }
         if (field === "lastTitle") {
-            const teamTitles = String(team[field]);
-            const answerTitles = String(answer[field]);
-            box.textContent = teamTitles;
-            if (teamTitles === "None" && answerTitles !== "None") {
-                box.textContent = "None ↑";
-            } else if (teamTitles !== "None" && answerTitles === "None") {
+            box.textContent = team[field];
+            if (team[field] === "None" && answer[field] !== "None") {
+                box.textContent += " ↑";
+            } else if (team[field] !== "None" && answer[field] === "None") {
                 box.textContent += " ↓";
-            } else if (teamTitles !== "None" && answerTitles !== "None") {
-                if (parseInt(teamTitles) < parseInt(answerTitles)) {
+            } else if (team[field] !== "None" && answer[field] !== "None") {
+                if (parseInt(team[field]) < parseInt(answer[field])) {
                     box.textContent += " ↑";
-                } else if (parseInt(teamTitles) > parseInt(answerTitles)) {
+                } else if (parseInt(team[field]) > parseInt(answer[field])) {
                     box.textContent += " ↓";
                 }
             }
