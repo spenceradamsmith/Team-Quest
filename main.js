@@ -3,6 +3,33 @@ const borders = window.borders;
 
 let guesses = 0;
 const maxGuesses = 8;
+
+// const todayET = getEasternDate();
+// const seed = todayET.year * 10000 + todayET.month * 100 + todayET.day;
+// const rngIndex = seededRandom(seed) % teams.length;
+// const answer = teams[rngIndex]; 
+
+// function getEasternDate() {
+//     const now = new Date();
+//     const formatter = new Intl.DateTimeFormat('en-US', {
+//         timeZone: 'America/New_York',
+//         year: 'numeric',
+//         month: '2-digit',
+//         day: '2-digit'
+//     });
+//     const parts = formatter.formatToParts(now);
+//     const year = parseInt(parts.find(p => p.type === 'year').value);
+//     const month = parseInt(parts.find(p => p.type === 'month').value);
+//     const day = parseInt(parts.find(p => p.type === 'day').value);
+//     return { year, month, day };
+// }
+
+// function seededRandom(seed) {
+//     let x = Math.sin(seed) * 10000;
+//     return Math.floor((x - Math.floor(x)) * 1000000);
+// }
+
+
 const answer = teams[Math.floor(Math.random() * teams.length)];
 
 const colorMap = {
