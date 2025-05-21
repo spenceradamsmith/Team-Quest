@@ -194,7 +194,7 @@ button:active {
     }
     h1 {
         display: flex;
-        width: 100px;
+        width: 150px;
         justify-content: flex-start;
         align-items: center;
     }
