@@ -8,26 +8,27 @@
 </head>
 <body>
     <div class="game-container">
-        <h1>Guess the Team!</h1>
-        <p>Guess the sports team in 8 tries! Clues: State, Colors, Titles, Last Title, League, Conference, and Sport.</p>
+        <h1>Guess the Team! Add Rules Popup</h1>
+        
         <!-- The input field for the user to enter their guess -->
         <div class="input-container">  
             <input type="text" id="team-imput" placeholder="Enter a team name..." list="team-suggestions">
             <datalist id="team-suggestions"></datalist>
             <button onclick="submitGuess()">Guess</button>
         </div>
+        
         <!-- The container for the clue names -->
-        <div id="clue-row-container">
-            <div class="clue-row">
-                <div class="clue-box">State</div>
-                <div class="clue-box">Colors</div>
-                <div class="clue-box">Titles</div>
-                <div class="clue-box">Last Title</div>
-                <div class="clue-box">League</div>
-                <div class="clue-box">Conference</div>
-                <div class="clue-box">Sport</div>
+        <div class="clue-row-container">
+                <div class="guess-row">
+                    <div class="clue-box">State</div>
+                    <div class="clue-box">Colors</div>
+                    <div class="clue-box">Titles</div>
+                    <div class="clue-box">Last Title</div>
+                    <div class="clue-box">League</div>
+                    <div class="clue-box">Conference</div>
+                    <div class="clue-box">Sport</div>
+                </div>
             </div>
-        </div>
 
         <!-- The container for the guesses -->
         <div id="guess-container">
