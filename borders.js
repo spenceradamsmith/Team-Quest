@@ -1,4 +1,4 @@
-{
+window.borders = {
     "AL": ["FL", "GA", "MS", "TN"],
     "AZ": ["CA", "NV", "NM", "UT"],
     "AR": ["LA", "MS", "MO", "OK", "TN", "TX"],
@@ -48,4 +48,4 @@
     "WI": ["IL", "IA", "MI", "MN"],
     "WY": ["CO", "ID", "MT", "NE", "SD", "UT"],
     "ON": ["MI", "NY", "PA"]
-}
+};
