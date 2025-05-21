@@ -7,6 +7,16 @@ const maxGuesses = 8;
 let gotCorrect = false;
 let gotWrong = false;
 
+let correctFilters = {
+    league: null,
+    sport: null,
+};
+
+let incorrectFilters = {
+    league: new Set(),
+    sport: new Set(),
+};
+
 startDailyGame();
 
 function toggleMode() {
@@ -114,13 +124,41 @@ const colorMap = {
 };
 
 window.addEventListener("DOMContentLoaded", () => {
+    filterSuggestions();
+});
+
+function filterSuggestions() {
     const datalist = document.getElementById("team-suggestions");
-    teams.forEach(team => {
+    datalist.innerHTML = "";
+
+    const filtered = teams.filter(team => {
+        for (let field of ["league", "sport"]) {
+            if (correctFilters[field] && team[field] !== correctFilters[field]) return false;
+            if (incorrectFilters[field].has(team[field])) return false;
+        }
+        return true;
+    });
+
+    filtered.forEach(team => {
         const option = document.createElement("option");
         option.value = team.name;
         datalist.appendChild(option);
-    })
-});
+    });
+}
+
+function updateFilters(team) {
+    ["league", "sport"].forEach(field => {
+        const guessedValue = team[field];
+        const answerValue = answer[field];
+
+        if (guessedValue === answerValue) {
+            correctFilters[field] = guessedValue;
+            incorrectFilters[field].clear();
+        } else if (!correctFilters[field]) {
+            incorrectFilters[field].add(guessedValue);
+        }
+    });
+}
 
 function submitGuess() {
     if (guesses >= maxGuesses) {
@@ -137,6 +175,17 @@ function submitGuess() {
     if (!team) {
         alert("Invalid team!");
         return;
+    }
+
+    for (let field of ["league", "sport"]) {
+        if (correctFilters[field] && team[field] !== correctFilters[field]) {
+            alert(`Invalid guess: This team cannot be the answer.`);
+            return;
+        }
+        if (incorrectFilters[field].has(team[field])) {
+            alert(`Invalid guess: This team cannot be the answer.`);
+            return;
+        }
     }
 
     const guessRowContainers = document.querySelectorAll(".guess-row-container");
@@ -206,6 +255,9 @@ function submitGuess() {
     });
     guesses++;
     document.getElementById("team-input").value = "";
+
+    updateFilters(team);
+    filterSuggestions();
 
     if (team.name === answer.name) {
         gotCorrect = true;

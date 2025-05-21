@@ -10,7 +10,7 @@ window.borders = {
     "GA": ["AL", "FL", "NC", "SC", "TN"],
     "ID": ["MT", "NV", "OR", "UT", "WA", "WY"],
     "IL": ["IN", "IA", "KY", "MO", "WI"],
-    "IN": ["IL", "KY", "MI", "OH"],
+    "IN": ["Is", "KY", "MI", "OH"],
     "IA": ["IL", "MN", "MO", "NE", "SD", "WI"],
     "KS": ["CO", "MO", "NE", "OK"],
     "KY": ["IL", "IN", "MO", "OH", "TN", "VA", "WV"],
