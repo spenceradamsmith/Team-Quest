@@ -17,7 +17,7 @@ let incorrectFilters = {
     sport: new Set(),
 };
 
-let incorrectTeams = new Set();
+let guessedTeams = new Set();
 
 startDailyGame();
 
