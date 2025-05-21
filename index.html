@@ -7,57 +7,143 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header class="title" id="header">
-        <h1>Team Guess</h1>
-    </header>
-    <main>
-        <!-- Search Bar -->
-        <div class="search-container">
-            <input type="text" id="search" placeholder="Guess a Team...">
-            <button id="search-btn">Guess</button>
+    <div class="game-container">
+        <h1>Guess the Team!</h1>
+        <p>Guess the sports team in 8 tries! Clues: State, Colors, Titles, Last Title, League, Conference, and Sport.</p>
+        <!-- The input field for the user to enter their guess -->
+        <div class="input-container">  
+            <input type="text" id="team-imput" placeholder="Enter a team name..." list="team-suggestions">
+            <datalist id="team-suggestions"></datalist>
+            <button onclick="submitGuess()">Guess</button>
+        </div>
+        <!-- The container for the clue names -->
+        <div id="clue-row-container">
+            <div class="clue-row">
+                <div class="clue-box">State</div>
+                <div class="clue-box">Colors</div>
+                <div class="clue-box">Titles</div>
+                <div class="clue-box">Last Title</div>
+                <div class="clue-box">League</div>
+                <div class="clue-box">Conference</div>
+                <div class="clue-box">Sport</div>
+            </div>
         </div>
 
-        <!-- Guesses Section -->
-        <div class="guesses">
-            <table>
-                <thead>
-                    <tr>
-                        <th>State</th>
-                        <th>Colors</th>
-                        <th>Titles</th>
-                        <th>Last Title</th>
-                        <th>League</th>
-                        <th>Conference</th>
-                        <th>Sport</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="guess-row" data-team="Team 1">
-                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr class="guess-row" data-team="Team 2">
-                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr class="guess-row" data-team="Team 3">
-                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr class="guess-row" data-team="Team 4">
-                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr class="guess-row" data-team="Team 5">
-                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr class="guess-row" data-team="Team 6">
-                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr class="guess-row" data-team="Team 7">
-                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr class="guess-row" data-team="Team 8">
-                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                </tbody>
-            </table>
+        <!-- The container for the guesses -->
+        <div id="guess-container">
+            <!-- Guess #1 -->
+            <div class="guess-row-container">
+                <div class="team-name-box placeholder"></div>
+                <div class="guess-row">
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                </div>
+            </div>
+
+            <!-- Guess #2 -->
+            <div class="guess-row-container">
+                <div class="team-name-box placeholder"></div>
+                <div class="guess-row">
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                </div>
+            </div>
+
+            <!-- Guess #3 -->
+            <div class="guess-row-container">
+                <div class="team-name-box placeholder"></div>
+                <div class="guess-row">
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                </div>
+            </div>
+
+            <!-- Guess #4 -->
+            <div class="guess-row-container">
+                <div class="team-name-box placeholder"></div>
+                <div class="guess-row">
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                </div>
+            </div>
+
+            <!-- Guess #5 -->
+            <div class="guess-row-container">
+                <div class="team-name-box placeholder"></div>
+                <div class="guess-row">
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                </div>
+            </div>
+
+            <!-- Guess #6 -->
+            <div class="guess-row-container">
+                <div class="team-name-box placeholder"></div>
+                <div class="guess-row">
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                </div>
+            </div>
+
+            <!-- Guess #7 -->
+            <div class="guess-row-container">
+                <div class="team-name-box placeholder"></div>
+                <div class="guess-row">
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                </div>
+            </div>
+
+            <!-- Guess #8 -->
+            <div class="guess-row-container">
+                <div class="team-name-box placeholder"></div>
+                <div class="guess-row">
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                    <div class="guess-box placeholder"></div>
+                </div>
+            </div>
         </div>
-    </main>
+
+        <p id="result"></p>
+    </div>
 </body>

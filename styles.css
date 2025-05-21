@@ -1,79 +1,116 @@
-.title {
+body {
     font-family: Arial, sans-serif;
-    font-size: 25px;
-    font-weight: bold;
-    color: black;
     text-align: center;
+    background-color: white;
+    margin: 0;
 }
 
-.search-container {
+.game-container {
+    width: 100%;
+    height: 100%;
+}
+
+.input-container {
     display: flex;
+    align-items: center;
     justify-content: center;
     gap: 10px;
-    padding-bottom: 20px;
+    margin-bottom: 10px 0;
 }
 
-#search {
-    width: 50%;
+.clue-row,
+.guess-row {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.clue-row {
+    width: 90%;
+}
+
+.guess-row-container {
+    border: 2px solid #ccc;
+    border-radius: 10px;
     padding: 10px;
-    font-size: 16px;
+    margin: 10px 0;
+}
+
+.team-name-box {
+    grid-column: 1 / -1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 4px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.clue-box, .guess-box {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.clue-box {
+    border-color: black;
+}
+
+.guess-box.green {
+    background-color: #6aaa64;
+    color: white;
+}
+
+.guess-box.yellow {
+    background-color: #c9b458;
+    color: white;
+}
+
+.guess-box.gray {
+    background-color: #787c7e;
+    color: white;
+}
+
+.guess-box.placeholder {
+    background-color: #e0e0e0;
+    color: transparent;
+}
+
+input {
+    width: 75%;
+    padding: 10px;
+    margin: 10px 10px 10px 0;
     border: 2px solid black;
     border-radius: 10px;
+    font-size: 12px;
+    outline: none;
 }
 
-#search-btn {
+button {
     padding: 10px 20px;
-    font-size: 16px;
+    height: 41px;
     background-color: white;
     color: black;
-    border-radius: 10px;
     border: 2px solid black;
-    cursor: pointer;
-    justify-content: center;
-}
-
-#search-btn:active {
-    background-color: grey;
-}
-
-#search:focus {
-    outline: none;
-    box-shadow: none;
-}
-
-.guesses table {
-    width: 90%;
-    margin: 0 auto;
-    table-layout: fixed;
-    border-collapse: separate;
-    border-spacing: 0 10px;
-}
-
-.guess-row {
-    position: relative;
-    outline: 1px solid black;
     border-radius: 10px;
-    padding-top: 24px;
-    height: 50px;
-}
-
-.guesses th {
-    text-align: center;
-}
-
-.guess-row td {
-    text-align: center;
-    padding: 8px 12px;
-}
-
-.guess-row td:first-child::before {
-    content: attr(data-team);
-    position: absolute;
-    top: 6px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: white;
-    padding: 0 6px;
+    font-size: 12px;
     font-weight: bold;
-    pointer-events: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: lightgray;
+}
+
+button:active {
+    background-color: white;
+}
+
+#result {
+    margin-top: 10px;
+    font-weight: bold;
 }
