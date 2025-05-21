@@ -165,4 +165,8 @@ button:active {
     .team-name-box {
         font-size: 12px;
     }
+    .color-circle {
+        width: 10px;
+        height: 10px;
+    }
 }
