@@ -52,7 +52,7 @@ body {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 10px;
-    font-size: 14px;
+    font-size: 12px;
     text-align: center;
     margin-bottom: 5px;
 }
@@ -159,7 +159,7 @@ button:active {
     }
     .clue-box,
     .guess-box {
-        font-size: 10px;
+        font-size: 9px;
         padding: 8px;
     }
     .team-name-box {
