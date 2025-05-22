@@ -57,7 +57,7 @@ window.teams = [
   {
     "name": "Cleveland Cavaliers",
     "state": "OH",
-    "colors": "Red/Gold",
+    "colors": "Red/Yellow",
     "titles": 1,
     "lastTitle": 2016,
     "league": "NBA",
@@ -211,7 +211,7 @@ window.teams = [
   {
     "name": "New Orleans Pelicans",
     "state": "LA",
-    "colors": "Blue/Gold",
+    "colors": "Blue/Red",
     "titles": 0,
     "lastTitle": "None",
     "league": "NBA",
@@ -453,7 +453,7 @@ window.teams = [
   {
     "name": "Green Bay Packers",
     "state": "WI",
-    "colors": "Green/Gold",
+    "colors": "Green/Yellow",
     "titles": 4,
     "lastTitle": 2010,
     "league": "NFL",
@@ -497,7 +497,7 @@ window.teams = [
   {
     "name": "Kansas City Chiefs",
     "state": "MO",
-    "colors": "Red/Gold",
+    "colors": "Red/Yellow",
     "titles": 3,
     "lastTitle": 2024,
     "league": "NFL",
@@ -530,7 +530,7 @@ window.teams = [
   {
     "name": "Los Angeles Rams",
     "state": "CA",
-    "colors": "Blue/Gold",
+    "colors": "Blue/Yellow",
     "titles": 2,
     "lastTitle": 2021,
     "league": "NFL",
@@ -574,7 +574,7 @@ window.teams = [
   {
     "name": "New Orleans Saints",
     "state": "LA",
-    "colors": "Black/Gold",
+    "colors": "Black/White",
     "titles": 1,
     "lastTitle": 2009,
     "league": "NFL",
@@ -618,7 +618,7 @@ window.teams = [
   {
     "name": "Pittsburgh Steelers",
     "state": "PA",
-    "colors": "Black/Gold",
+    "colors": "Black/Yellow",
     "titles": 6,
     "lastTitle": 2008,
     "league": "NFL",
@@ -629,7 +629,7 @@ window.teams = [
   {
     "name": "San Francisco 49ers",
     "state": "CA",
-    "colors": "Red/Gold",
+    "colors": "Red/White",
     "titles": 5,
     "lastTitle": 1994,
     "league": "NFL",
@@ -673,7 +673,7 @@ window.teams = [
   {
     "name": "Washington Commanders",
     "state": "DC",
-    "colors": "Red/Gold",
+    "colors": "Red/Yellow",
     "titles": 3,
     "lastTitle": 1991,
     "league": "NFL",
@@ -805,7 +805,7 @@ window.teams = [
   {
     "name": "Kansas City Royals",
     "state": "MO",
-    "colors": "Blue/Gold",
+    "colors": "Blue/White",
     "titles": 2,
     "lastTitle": 2015,
     "league": "MLB",
@@ -849,7 +849,7 @@ window.teams = [
   {
     "name": "Milwaukee Brewers",
     "state": "WI",
-    "colors": "Blue/Gold",
+    "colors": "Blue/Yellow",
     "titles": 0,
     "lastTitle": "None",
     "league": "MLB",
@@ -893,7 +893,7 @@ window.teams = [
   {
     "name": "Oakland Athletics",
     "state": "CA",
-    "colors": "Green/Gold",
+    "colors": "Green/Yellow",
     "titles": 9,
     "lastTitle": 1989,
     "league": "MLB",
@@ -915,7 +915,7 @@ window.teams = [
   {
     "name": "Pittsburgh Pirates",
     "state": "PA",
-    "colors": "Black/Gold",
+    "colors": "Black/Yellow",
     "titles": 5,
     "lastTitle": 1979,
     "league": "MLB",
@@ -926,7 +926,7 @@ window.teams = [
   {
     "name": "San Diego Padres",
     "state": "CA",
-    "colors": "Brown/Gold",
+    "colors": "Brown/Yellow",
     "titles": 0,
     "lastTitle": "None",
     "league": "MLB",
@@ -1036,7 +1036,7 @@ window.teams = [
   {
     "name": "Boston Bruins",
     "state": "MA",
-    "colors": "Black/Gold",
+    "colors": "Black/Yellow",
     "titles": 6,
     "lastTitle": 2011,
     "league": "NHL",
@@ -1047,7 +1047,7 @@ window.teams = [
   {
     "name": "Buffalo Sabres",
     "state": "NY",
-    "colors": "Blue/Gold",
+    "colors": "Blue/Yellow",
     "titles": 0,
     "lastTitle": "None",
     "league": "NHL",
@@ -1058,7 +1058,7 @@ window.teams = [
   {
     "name": "Calgary Flames",
     "state": "AB",
-    "colors": "Red/Gold",
+    "colors": "Red/Yellow",
     "titles": 1,
     "lastTitle": 1989,
     "league": "NHL",
@@ -1146,7 +1146,7 @@ window.teams = [
   {
     "name": "Florida Panthers",
     "state": "FL",
-    "colors": "Red/Gold",
+    "colors": "Blue/Red",
     "titles": 1,
     "lastTitle": 2024,
     "league": "NHL",
@@ -1190,7 +1190,7 @@ window.teams = [
   {
     "name": "Nashville Predators",
     "state": "TN",
-    "colors": "Blue/Gold",
+    "colors": "Blue/Yellow",
     "titles": 0,
     "lastTitle": "None",
     "league": "NHL",
@@ -1256,7 +1256,7 @@ window.teams = [
   {
     "name": "Pittsburgh Penguins",
     "state": "PA",
-    "colors": "Black/Gold",
+    "colors": "Black/Yellow",
     "titles": 5,
     "lastTitle": 2017,
     "league": "NHL",
@@ -1289,7 +1289,7 @@ window.teams = [
   {
     "name": "St. Louis Blues",
     "state": "MO",
-    "colors": "Blue/Gold",
+    "colors": "Blue/Yellow",
     "titles": 1,
     "lastTitle": 2019,
     "league": "NHL",
@@ -1333,7 +1333,7 @@ window.teams = [
   {
     "name": "Vegas Golden Knights",
     "state": "NV",
-    "colors": "Black/Gold",
+    "colors": "Black/Yellow",
     "titles": 1,
     "lastTitle": 2023,
     "league": "NHL",
@@ -1432,7 +1432,7 @@ window.teams = [
   {
     "name": "Purdue Boilermakers Basketball",
     "state": "IN",
-    "colors": "Black/Gold",
+    "colors": "Black/Yellow",
     "titles": 0,
     "lastTitle": "None",
     "league": "NCAA",
@@ -1454,7 +1454,7 @@ window.teams = [
   {
     "name": "Iowa Hawkeyes Basketball",
     "state": "IA",
-    "colors": "Black/Gold",
+    "colors": "Black/Yellow",
     "titles": 0,
     "lastTitle": "None",
     "league": "NCAA",
@@ -1465,7 +1465,7 @@ window.teams = [
   {
     "name": "Minnesota Golden Gophers Basketball",
     "state": "MN",
-    "colors": "Red/Gold",
+    "colors": "Red/Yellow",
     "titles": 0,
     "lastTitle": "None",
     "league": "NCAA",
@@ -1531,7 +1531,7 @@ window.teams = [
   {
     "name": "USC Trojans Basketball",
     "state": "CA",
-    "colors": "Red/Gold",
+    "colors": "Red/Yellow",
     "titles": 0,
     "lastTitle": "None",
     "league": "NCAA",
@@ -1597,7 +1597,7 @@ window.teams = [
   {
     "name": "LSU Tigers Basketball",
     "state": "LA",
-    "colors": "Purple/Gold",
+    "colors": "Purple/Yellow",
     "titles": 0,
     "lastTitle": "None",
     "league": "NCAA",
@@ -1652,7 +1652,7 @@ window.teams = [
   {
     "name": "Missouri Tigers Basketball",
     "state": "MO",
-    "colors": "Black/Gold",
+    "colors": "Black/Yellow",
     "titles": 0,
     "lastTitle": "None",
     "league": "NCAA",
@@ -1707,7 +1707,7 @@ window.teams = [
   {
     "name": "Vanderbilt Commodores Basketball",
     "state": "TN",
-    "colors": "Black/Gold",
+    "colors": "Black/Yellow",
     "titles": 0,
     "lastTitle": "None",
     "league": "NCAA",
@@ -1795,7 +1795,7 @@ window.teams = [
   {
     "name": "Boston College Eagles Basketball",
     "state": "MA",
-    "colors": "Red/Gold",
+    "colors": "Red/Yellow",
     "titles": 0,
     "lastTitle": "None",
     "league": "NCAA",
@@ -1806,7 +1806,7 @@ window.teams = [
   {
     "name": "California Golden Bears Basketball",
     "state": "CA",
-    "colors": "Blue/Gold",
+    "colors": "Blue/Yellow",
     "titles": 1,
     "lastTitle": 1959,
     "league": "NCAA",
@@ -1828,7 +1828,7 @@ window.teams = [
   {
     "name": "Florida State Seminoles Basketball",
     "state": "FL",
-    "colors": "Red/Gold",
+    "colors": "Red/Yellow",
     "titles": 0,
     "lastTitle": "None",
     "league": "NCAA",
@@ -1839,7 +1839,7 @@ window.teams = [
   {
     "name": "Georgia Tech Yellow Jackets Basketball",
     "state": "GA",
-    "colors": "Blue/Gold",
+    "colors": "Blue/Yellow",
     "titles": 0,
     "lastTitle": "None",
     "league": "NCAA",
@@ -1872,7 +1872,7 @@ window.teams = [
   {
     "name": "Notre Dame Fighting Irish Basketball",
     "state": "IN",
-    "colors": "Blue/Gold",
+    "colors": "Blue/Yellow",
     "titles": 0,
     "lastTitle": "None",
     "league": "NCAA",
@@ -1883,7 +1883,7 @@ window.teams = [
   {
     "name": "Pittsburgh Panthers Basketball",
     "state": "PA",
-    "colors": "Blue/Gold",
+    "colors": "Blue/Yellow",
     "titles": 0,
     "lastTitle": "None",
     "league": "NCAA",
@@ -1927,7 +1927,7 @@ window.teams = [
   {
     "name": "Wake Forest Demon Deacons Basketball",
     "state": "NC",
-    "colors": "Black/Gold",
+    "colors": "Black/Yellow",
     "titles": 0,
     "lastTitle": "None",
     "league": "NCAA",
@@ -1949,7 +1949,7 @@ window.teams = [
   {
     "name": "Baylor Bears Basketball",
     "state": "TX",
-    "colors": "Green/Gold",
+    "colors": "Green/Yellow",
     "titles": 1,
     "lastTitle": 2021,
     "league": "NCAA",
@@ -1982,7 +1982,7 @@ window.teams = [
   {
     "name": "Arizona State Sun Devils Basketball",
     "state": "AZ",
-    "colors": "Red/Gold",
+    "colors": "Red/Yellow",
     "titles": 0,
     "lastTitle": "None",
     "league": "NCAA",
@@ -2015,7 +2015,7 @@ window.teams = [
   {
     "name": "Colorado Buffaloes Basketball",
     "state": "CO",
-    "colors": "Black/Gold",
+    "colors": "Black/Gray",
     "titles": 0,
     "lastTitle": "None",
     "league": "NCAA",
@@ -2081,7 +2081,7 @@ window.teams = [
   {
     "name": "UCF Knights Basketball",
     "state": "FL",
-    "colors": "Black/Gold",
+    "colors": "Black/Yellow",
     "titles": 0,
     "lastTitle": "None",
     "league": "NCAA",
@@ -2103,7 +2103,7 @@ window.teams = [
   {
     "name": "West Virginia Mountaineers Basketball",
     "state": "WV",
-    "colors": "Blue/Gold",
+    "colors": "Blue/Yellow",
     "titles": 0,
     "lastTitle": "None",
     "league": "NCAA",
@@ -2301,7 +2301,7 @@ window.teams = [
   {
     "name": "Purdue Boilermakers Football",
     "state": "IN",
-    "colors": "Black/Gold",
+    "colors": "Black/Yellow",
     "titles": 1,
     "lastTitle": 1931,
     "league": "NCAA",
@@ -2323,7 +2323,7 @@ window.teams = [
   {
     "name": "Iowa Hawkeyes Football",
     "state": "IA",
-    "colors": "Black/Gold",
+    "colors": "Black/Yellow",
     "titles": 5,
     "lastTitle": 1960,
     "league": "NCAA",
@@ -2334,7 +2334,7 @@ window.teams = [
   {
     "name": "Minnesota Golden Gophers Football",
     "state": "MN",
-    "colors": "Red/Gold",
+    "colors": "Red/Yellow",
     "titles": 7,
     "lastTitle": 1960,
     "league": "NCAA",
@@ -2400,7 +2400,7 @@ window.teams = [
   {
     "name": "USC Trojans Football",
     "state": "CA",
-    "colors": "Red/Gold",
+    "colors": "Red/Yellow",
     "titles": 11,
     "lastTitle": 2004,
     "league": "NCAA",
@@ -2466,7 +2466,7 @@ window.teams = [
   {
     "name": "LSU Tigers Football",
     "state": "LA",
-    "colors": "Purple/Gold",
+    "colors": "Purple/Yellow",
     "titles": 4,
     "lastTitle": 2019,
     "league": "NCAA",
@@ -2521,7 +2521,7 @@ window.teams = [
   {
     "name": "Missouri Tigers Football",
     "state": "MO",
-    "colors": "Black/Gold",
+    "colors": "Black/Yellow",
     "titles": 2,
     "lastTitle": 1960,
     "league": "NCAA",
@@ -2576,7 +2576,7 @@ window.teams = [
   {
     "name": "Vanderbilt Commodores Football",
     "state": "TN",
-    "colors": "Black/Gold",
+    "colors": "Black/Yellow",
     "titles": 0,
     "lastTitle": "None",
     "league": "NCAA",
@@ -2664,7 +2664,7 @@ window.teams = [
   {
     "name": "Boston College Eagles Football",
     "state": "MA",
-    "colors": "Red/Gold",
+    "colors": "Red/Yellow",
     "titles": 0,
     "lastTitle": "None",
     "league": "NCAA",
@@ -2675,7 +2675,7 @@ window.teams = [
   {
     "name": "California Golden Bears Football",
     "state": "CA",
-    "colors": "Blue/Gold",
+    "colors": "Blue/Yellow",
     "titles": 5,
     "lastTitle": 1937,
     "league": "NCAA",
@@ -2697,7 +2697,7 @@ window.teams = [
   {
     "name": "Florida State Seminoles Football",
     "state": "FL",
-    "colors": "Red/Gold",
+    "colors": "Red/Yellow",
     "titles": 3,
     "lastTitle": 2013,
     "league": "NCAA",
@@ -2708,7 +2708,7 @@ window.teams = [
   {
     "name": "Georgia Tech Yellow Jackets Football",
     "state": "GA",
-    "colors": "Blue/Gold",
+    "colors": "Blue/Yellow",
     "titles": 4,
     "lastTitle": 1990,
     "league": "NCAA",
@@ -2741,7 +2741,7 @@ window.teams = [
   {
     "name": "Pittsburgh Panthers Football",
     "state": "PA",
-    "colors": "Blue/Gold",
+    "colors": "Blue/Yellow",
     "titles": 9,
     "lastTitle": 1976,
     "league": "NCAA",
@@ -2785,7 +2785,7 @@ window.teams = [
   {
     "name": "Wake Forest Demon Deacons Football",
     "state": "NC",
-    "colors": "Black/Gold",
+    "colors": "Black/Yellow",
     "titles": 0,
     "lastTitle": "None",
     "league": "NCAA",
@@ -2807,7 +2807,7 @@ window.teams = [
   {
     "name": "Baylor Bears Football",
     "state": "TX",
-    "colors": "Green/Gold",
+    "colors": "Green/Yellow",
     "titles": 1,
     "lastTitle": 1974,
     "league": "NCAA",
@@ -2840,7 +2840,7 @@ window.teams = [
   {
     "name": "Arizona State Sun Devils Football",
     "state": "AZ",
-    "colors": "Red/Gold",
+    "colors": "Red/Yellow",
     "titles": 2,
     "lastTitle": 1975,
     "league": "NCAA",
@@ -2873,7 +2873,7 @@ window.teams = [
   {
     "name": "Colorado Buffaloes Football",
     "state": "CO",
-    "colors": "Black/Gold",
+    "colors": "Black/Gray",
     "titles": 1,
     "lastTitle": 1990,
     "league": "NCAA",
@@ -2939,7 +2939,7 @@ window.teams = [
   {
     "name": "UCF Knights Football",
     "state": "FL",
-    "colors": "Black/Gold",
+    "colors": "Black/Yellow",
     "titles": 0,
     "lastTitle": "None",
     "league": "NCAA",
@@ -2961,7 +2961,7 @@ window.teams = [
   {
     "name": "West Virginia Mountaineers Football",
     "state": "WV",
-    "colors": "Blue/Gold",
+    "colors": "Blue/Yellow",
     "titles": 0,
     "lastTitle": "None",
     "league": "NCAA",
