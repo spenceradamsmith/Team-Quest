@@ -68,8 +68,8 @@ body {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 5px;
+    width: 100%;
     margin: 0;
-    max-width: 100%;
 }
 
 .guess-row-container {
@@ -193,7 +193,12 @@ button:active {
     }
     .clue-row-container,
     .guess-row-container {
+        display: grid;
+        grid-template-columns: 1fr;
         max-width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+        box-sizing: border-box;
     }
     input {
         width: 60%;
