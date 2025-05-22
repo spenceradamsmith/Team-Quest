@@ -18,8 +18,6 @@ let incorrectFilters = {
 
 let guessedTeams = [];
 
-startDailyGame();
-
 function toggleMode() {
     isRandomMode = !isRandomMode;
 
@@ -274,6 +272,7 @@ const colorMap = {
 
 window.addEventListener("DOMContentLoaded", () => {
     filterSuggestions();
+    startDailyGame();
 });
 
 function filterSuggestions() {

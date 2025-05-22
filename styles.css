@@ -198,6 +198,8 @@ button:active {
     input {
         width: 60%;
         max-width: 200px;
+        font-size: 16px;;
+        transform: scale(0.875);
     }
     .clue-box,
     .guess-box {
