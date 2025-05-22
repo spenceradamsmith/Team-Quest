@@ -10,15 +10,19 @@ body {
 }
 
 .header {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 20px;
-    padding-bottom: 0px;
     background-color: white;
+    position: fixed;
     z-index: 1000;
     top: 0;
-    position: fixed;
     width: 100%;
+    padding: 20px 0 0;
+}
+
+.header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    align-items: center;
 }
 
 .top-buttons {

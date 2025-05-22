@@ -17,7 +17,7 @@ let incorrectFilters = {
     sport: new Set(),
 };
 
-let guessedTeams = new Set();
+let guessedTeams = [];
 
 startDailyGame();
 
@@ -80,6 +80,9 @@ function seededRandom(seed) {
 
 function startDailyGame() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (loadDailyGameState()) {
+        return;
+    }
     guesses = 0;
     guessedTeams.clear();
     correctFilters = {
@@ -96,7 +99,90 @@ function startDailyGame() {
     const seed = todayET.year * 10000 + todayET.month * 100 + todayET.day;
     const rngIndex = seededRandom(seed) % teams.length;
     answer = teams[rngIndex]; 
+
+    saveDailyGameState();
 }
+
+function renderPreviousGuesses() {
+    const guessList = guessedTeams;
+    for (let i = 0; i < guessList.length; i++) {
+        const guessName = guessList[i];
+        const team = teams.find(t => t.name.toLowerCase() === guessName.toLowerCase());
+        if (team) {
+            renderGuess(team, i);
+        }
+    }
+}
+
+function renderGuess(team, rowIndex) {
+    const guessRowContainers = document.querySelectorAll(".guess-row-container");
+    const currentRowContainer = guessRowContainers[rowIndex];
+    const teamNameBox = currentRowContainer.querySelector(".team-name-box");
+    const guessBoxes = currentRowContainer.querySelectorAll(".guess-box");
+
+    teamNameBox.textContent = team.name;
+    teamNameBox.classList.remove("placeholder");
+
+    const fields = ["state", "colors", "titles", "lastTitle", "league", "conference", "sport"];
+    fields.forEach((field, index) => {
+        const box = guessBoxes[index];
+        box.classList.remove("placeholder");
+
+        if (field == "colors") {
+            box.classList.add("colors");
+            box.innerHTML = "";
+            const [color1, color2] = team[field].split("/");
+            const circle1 = document.createElement("span");
+            circle1.classList.add("color-circle");
+            circle1.style.backgroundColor = colorMap[color1] || "#C0C0C0";
+            const circle2 = document.createElement("span");
+            circle2.classList.add("color-circle");
+            circle2.style.backgroundColor = colorMap[color2] || "#C0C0C0";
+
+            box.appendChild(circle1);
+            box.appendChild(circle2);
+        } else {
+            box.textContent = team[field];
+        }
+
+        if (team[field] === answer[field]) {
+            box.classList.add("green");
+        } else if (field === "state" && borders[answer.state] && borders[answer.state].includes(team.state)) {
+            box.classList.add("yellow");
+        } else if (field === "colors" && team[field].split("/").some(color => answer[field].split("/").includes(color))) {
+            box.classList.add("yellow");
+        } else if (field === "titles" && Math.abs(parseInt(team[field]) - parseInt(answer[field])) <= 3) {
+            box.classList.add("yellow");
+        } else if (field === "lastTitle" && team[field] !== "None" && answer[field] !== "None" && Math.abs(parseInt(team[field]) - parseInt(answer[field])) <= 5) {
+            box.classList.add("yellow");
+        } else {
+            box.classList.add("gray");
+        }
+
+        if (field === "titles") {
+            if (parseInt(team[field]) < parseInt(answer[field])) {
+                box.textContent += " ↑";
+            } else if (parseInt(team[field]) > parseInt(answer[field])) {
+                box.textContent += " ↓";
+            }
+        }
+        if (field === "lastTitle") {
+            box.textContent = team[field];
+            if (team[field] === "None" && answer[field] !== "None") {
+                box.textContent += " ↑";
+            } else if (team[field] !== "None" && answer[field] === "None") {
+                box.textContent += " ↓";
+            } else if (team[field] !== "None" && answer[field] !== "None") {
+                if (parseInt(team[field]) < parseInt(answer[field])) {
+                    box.textContent += " ↑";
+                } else if (parseInt(team[field]) > parseInt(answer[field])) {
+                    box.textContent += " ↓";
+                }
+            }
+        }
+    });
+}
+
 
 function clearGuesses() {
     document.getElementById("result").textContent = "";
@@ -127,6 +213,56 @@ function randomizeGame() {
     startRandomGame();
 }
 
+function saveDailyGameState() {
+    const today = getEasternDate();
+    const key = `dailyGame-${today.year}-${today.month}-${today.day}`;
+    const state = {
+        answer,
+        guesses,
+        guessedTeams: Array.from(guessedTeams),
+        correctFilters,
+        incorrectFilters: {
+            league: Array.from(incorrectFilters.league),
+            sport: Array.from(incorrectFilters.sport),
+        },
+        gotCorrect,
+        gotWrong
+    };
+    localStorage.setItem(key, JSON.stringify(state));
+}
+
+function loadDailyGameState() {
+    const today = getEasternDate();
+    const key = `dailyGame-${today.year}-${today.month}-${today.day}`;
+    const stored = localStorage.getItem(key);
+    if (!stored) {
+        return false;
+    }
+    try {
+        const state = JSON.parse(stored);
+        answer = state.answer;
+        guesses = state.guesses;
+        guessedTeams = new Set(state.guessedTeams);
+        correctFilters = state.correctFilters;
+        incorrectFilters = {
+            league: new Set(state.incorrectFilters.league),
+            sport: new Set(state.incorrectFilters.sport),
+        };
+        gotCorrect = state.gotCorrect;
+        gotWrong = state.gotWrong;
+        
+        filterSuggestions();
+        clearGuesses();
+        renderPreviousGuesses();
+        return true;
+    } catch (e) {
+        console.error("Failed to load saved game", e);
+        return false;
+    }
+}
+
+
+
 const colorMap = {
   "Red": "#FF0000",
   "Yellow": "#FFFF00",
@@ -150,7 +286,7 @@ function filterSuggestions() {
     datalist.innerHTML = "";
 
     const filtered = teams.filter(team => {
-        if (guessedTeams.has(team.name.toLowerCase())) {
+        if (guessedTeams.includes(team.name.toLowerCase())) {
             return false;
         }
         for (let field of ["league", "sport"]) {
@@ -186,6 +322,11 @@ function updateFilters(team) {
 }
 
 function submitGuess() {
+    if (!isRandomMode && (gotCorrect || gotWrong)) {
+        alert("You've already completed today's game!");
+        return;
+    }
+    
     if (guesses >= maxGuesses) {
         return;
     }
@@ -278,6 +419,7 @@ function submitGuess() {
             }
         }
     });
+    guessedTeams.push(team.name.toLowerCase());
     guesses++;
     document.getElementById("team-input").value = "";
 
@@ -292,6 +434,10 @@ function submitGuess() {
         gotWrong = true;
         //document.getElementById("result").textContent = `Game over! It was the ${answer.name}.`;
         window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    if (!isRandomMode) {
+        saveDailyGameState();
     }
 
     if (guesses < 5) {
