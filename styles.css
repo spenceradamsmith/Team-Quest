@@ -193,6 +193,10 @@ button:active {
     display: none;
 }
 
+.last-title-clue {
+    font-size: 8px;
+}
+
 @media (max-width: 600px) {
     .conference-full {
         display: none;
@@ -225,6 +229,9 @@ button:active {
     .clue-box {
         font-size: 8px;
         padding: 8px;
+    }
+    .last-title-clue {
+        font-size: 7px;
     }
     .guess-box {
         width: 100%;
