@@ -51,7 +51,7 @@ body {
     max-width: 1400px;
     margin: 0 auto;
     padding: 20px;
-    padding-top: 320px;
+    padding-top: 335px;
 }
 
 .input-container {
@@ -82,9 +82,9 @@ body {
 .clue-row-container {
     border: none;
     border-radius: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 10px;
     margin: 10px 0;
+    box-sizing: border-box;
 }
 
 .team-name-box {
@@ -189,7 +189,7 @@ button:active {
     .game-container {
         max-width: 100%;
         padding: 10px;
-        padding-top: 325px;
+        padding-top: 340px;
     }
     .clue-row-container,
     .guess-row-container {
