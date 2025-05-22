@@ -97,12 +97,16 @@ body {
     margin-bottom: 5px;
 }
 
-.clue-box, .guess-box {
+.clue-box,
+.guess-box {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 10px;
     font-size: 14px;
     text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .clue-box {
