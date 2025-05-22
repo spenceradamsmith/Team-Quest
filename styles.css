@@ -59,6 +59,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 10px;
+    padding-bottom: 15px;
     margin-bottom: 10px 0;
     margin-top: 125px;
 }
@@ -79,13 +80,8 @@ body {
     margin: 10px 0;
 }
 
-.clue-row-container {
-    border: none;
-    border-radius: 10px;
-    padding: 10px;
-    padding-bottom: 0;
-    margin: 10px 0;
-    box-sizing: border-box;
+.row-container {
+    padding-bottom: 15px;
 }
 
 .team-name-box {
@@ -112,7 +108,6 @@ body {
 
 .clue-box {
     border-color: black;
-    width: 100%;
 }
 
 .guess-box.colors {
@@ -194,7 +189,7 @@ button:active {
     .game-container {
         max-width: 100%;
         padding: 10px;
-        padding-top: 343px;
+        padding-top: 330px;
     }
 
     .guess-row-container {
@@ -204,13 +199,8 @@ button:active {
         margin: 10px 0;
     }
 
-    .clue-row-container {
-        border: none;
-        border-radius: 10px;
-        padding: 10px;
-        padding-bottom: 0;
-        margin: 10px 0;
-        box-sizing: border-box;
+    .row-container {
+        padding-bottom: 10px;
     }
 
     input {
