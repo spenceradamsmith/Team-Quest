@@ -107,6 +107,7 @@ body {
 
 .clue-box {
     border-color: black;
+    width: 80px;
 }
 
 .guess-box.colors {
@@ -202,6 +203,9 @@ button:active {
     .guess-box {
         font-size: 8px;
         padding: 8px;
+    }
+    .clue-box {
+        width: 80px;
     }
     .team-name-box {
         font-size: 12px;
