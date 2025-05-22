@@ -189,17 +189,24 @@ button:active {
     .game-container {
         max-width: 100%;
         padding: 10px;
-        padding-top: 340px;
+        padding-top: 343px;
     }
-    .clue-row-container,
+
     .guess-row-container {
-        display: grid;
-        grid-template-columns: 1fr;
-        max-width: 100%;
-        padding: 10px;
+        border: 2px solid #ccc;
         border-radius: 10px;
+        padding: 10px;
+        margin: 10px 0;
+    }
+
+    .clue-row-container {
+        border: none;
+        border-radius: 10px;
+        padding: 10px;
+        margin: 10px 0;
         box-sizing: border-box;
     }
+
     input {
         width: 60%;
         max-width: 200px;
