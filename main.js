@@ -44,7 +44,7 @@ function toggleMode() {
 function startRandomGame() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     guesses = 0;
-    guessedTeams.clear();
+    guessedTeams = [];
     correctFilters = {
         league: null,
         sport: null,
@@ -84,7 +84,7 @@ function startDailyGame() {
         return;
     }
     guesses = 0;
-    guessedTeams.clear();
+    guessedTeams = [];
     correctFilters = {
         league: null,
         sport: null,
@@ -107,7 +107,7 @@ function renderPreviousGuesses() {
     const guessList = guessedTeams;
     for (let i = 0; i < guessList.length; i++) {
         const guessName = guessList[i];
-        const team = teams.find(t => t.name.toLowerCase() === guessName.toLowerCase());
+        const team = teams.find(t => t.name === guessName);
         if (team) {
             renderGuess(team, i);
         }
@@ -242,7 +242,7 @@ function loadDailyGameState() {
         const state = JSON.parse(stored);
         answer = state.answer;
         guesses = state.guesses;
-        guessedTeams = new Set(state.guessedTeams);
+        guessedTeams = state.guessedTeams;
         correctFilters = state.correctFilters;
         incorrectFilters = {
             league: new Set(state.incorrectFilters.league),
@@ -286,7 +286,7 @@ function filterSuggestions() {
     datalist.innerHTML = "";
 
     const filtered = teams.filter(team => {
-        if (guessedTeams.includes(team.name.toLowerCase())) {
+        if (guessedTeams.includes(team.name)) {
             return false;
         }
         for (let field of ["league", "sport"]) {
@@ -314,7 +314,7 @@ function updateFilters(team) {
 
         if (guessedValue === answerValue) {
             correctFilters[field] = guessedValue;
-            incorrectFilters[field].clear();
+            incorrectFilters[field] = [];
         } else if (!correctFilters[field]) {
             incorrectFilters[field].add(guessedValue);
         }
@@ -337,7 +337,7 @@ function submitGuess() {
     }
 
     const input = document.getElementById("team-input").value.trim();
-    const team = teams.find(t => t.name.toLowerCase() === input.toLowerCase());
+    const team = teams.find(t => t.name === input);
     if (!team) {
         alert("Invalid team!");
         return;
@@ -419,7 +419,7 @@ function submitGuess() {
             }
         }
     });
-    guessedTeams.push(team.name.toLowerCase());
+    guessedTeams.push(team.name);
     guesses++;
     document.getElementById("team-input").value = "";
 
