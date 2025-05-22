@@ -423,6 +423,8 @@ function submitGuess() {
     updateFilters(team);
     filterSuggestions();
 
+
+
     if (team.name === answer.name) {
         gotCorrect = true;
         //document.getElementById("result").textContent = `You got it in ${guesses} guesses!`;
@@ -431,12 +433,17 @@ function submitGuess() {
         gotWrong = true;
         //document.getElementById("result").textContent = `Game over! It was the ${answer.name}.`;
         window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    if (guessedTeams.length < 5) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    }
+        const currentRow = document.querySelectorAll(".guess-row-container")[guessedTeams.length - 1];
+        if (currentRow) {
+            const rect = currentRow.getBoundingClientRect();
+            const offset = rect.bottom + window.scrollY;
+            const padding = 20; // adjust if needed
 
+            window.scrollTo({
+                top: offset - window.innerHeight + padding,
+                behavior: 'smooth'
+            });
+        }
+    }
 }
