@@ -219,13 +219,15 @@ button:active {
     .input-container {
         margin-top: 90px;
     }
-    .clue-box,
-    .guess-box {
+    .clue-box {
         font-size: 7px;
-        padding: 6px;
+        padding: 5px;
     }
+
     .guess-box {
         width: 100%;
+        font-size: 8px;
+        padding: 8px;
     }
     .team-name-box {
         font-size: 12px;
