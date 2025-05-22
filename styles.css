@@ -189,7 +189,7 @@ button:active {
     .game-container {
         max-width: 100%;
         padding: 10px;
-        padding-top: 320px;
+        padding-top: 400px;
     }
     .clue-row-container,
     .guess-row-container {
