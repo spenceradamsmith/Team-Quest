@@ -14,7 +14,7 @@ const abbreviations = {
         "BIG EAST": "BIG E",
     },
     sport: {
-        "Basketball": "BASKET",
+        "Basketball": "BASK",
         "Football": "FB",
         "Baseball": "BASE",
         "Hockey": "HKY",
