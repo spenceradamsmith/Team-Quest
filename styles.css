@@ -185,11 +185,11 @@ button:active {
     font-weight: bold;
 }
 
-.conference-full {
+.clue-full {
     display: inline;
 }
 
-.conference-short {
+.clue-short {
     display: none;
 }
 
@@ -198,10 +198,10 @@ button:active {
 }
 
 @media (max-width: 600px) {
-    .conference-full {
+    .clue-full {
         display: none;
     }
-    .conference-short {
+    .clue-short {
         display: inline;
     }
     .game-container {
@@ -227,11 +227,8 @@ button:active {
         margin-top: 90px;
     }
     .clue-box {
-        font-size: 8px;
+        font-size: 10px;
         padding: 8px;
-    }
-    .last-title-clue {
-        font-size: 7px;
     }
     .guess-box {
         width: 100%;

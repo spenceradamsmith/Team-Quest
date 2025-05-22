@@ -1,6 +1,30 @@
 const teams = window.teams;
 const borders = window.borders;
 
+const abbreviations = {
+    conference: {
+        "Western": "WEST",
+        "Eastern": "EAST",
+        "American": "AM",
+        "National": "NAT",
+        "BIG TEN": "BIG 10",
+        "SEC": "SEC",
+        "ACC": "ACC",
+        "BIG 12": "BIG 12",
+        "BIG EAST": "BIG E",
+    },
+    sport: {
+        "Basketball": "BASKET",
+        "Football": "FB",
+        "Baseball": "BASE",
+        "Hockey": "HKY",
+    }
+};
+
+function isMobileScreen() {
+    return window.innerWidth <= 600;
+}
+
 let isRandomMode = false;
 const maxGuesses = 8;
 let gotCorrect = false;
@@ -98,6 +122,29 @@ function startDailyGame() {
     saveDailyGameState();
 }
 
+function refreshAbbreviations() {
+    const isMobile = isMobileScreen();
+    const guessRows = document.querySelectorAll(".guess-row");
+
+    guessRows.forEach(row => {
+        const boxes = row.querySelectorAll(".guess-box");
+
+        const fieldOrder = ["state", "colors", "titles", "lastTitle", "league", "conference", "sport"];
+
+        fieldOrder.forEach((field, index) => {
+            if (field === "conference" || field === "sport") {
+                const box = boxes[index];
+                const fullValue = box.getAttribute("data-full");
+                if (!fullValue) return;
+
+                const displayValue = isMobile ? (abbreviations[field][fullValue] || fullValue) : fullValue;
+                box.textContent = displayValue;
+            }
+        });
+    });
+}
+
+
 function renderPreviousGuesses() {
     const guessList = guessedTeams;
     for (let i = 0; i < guessedTeams.length; i++) {
@@ -137,7 +184,12 @@ function renderGuess(team, rowIndex) {
             box.appendChild(circle1);
             box.appendChild(circle2);
         } else {
-            box.textContent = team[field];
+            let value = team[field];
+            box.setAttribute("data-full", value);
+            if (isMobileScreen() && (field === "conference" || field === "sport")) {
+                value = abbreviations[field][value] || value;
+            }
+            box.textContent = value;
         }
 
         if (team[field] === answer[field]) {
@@ -273,7 +325,10 @@ const colorMap = {
 window.addEventListener("DOMContentLoaded", () => {
     filterSuggestions();
     startDailyGame();
+    refreshAbbreviations();
 });
+
+window.addEventListener("resize", refreshAbbreviations);
 
 function filterSuggestions() {
     const datalist = document.getElementById("team-suggestions");
@@ -374,7 +429,12 @@ function submitGuess() {
             box.appendChild(circle1);
             box.appendChild(circle2);
         } else {
-            box.textContent = team[field];
+            let value = team[field];
+            box.setAttribute("data-full", value);
+            if (isMobileScreen() && (field === "conference" || field === "sport")) {
+                value = abbreviations[field][value] || value;
+            }
+            box.textContent = value;
         }
 
         if (team[field] === answer[field]) {
