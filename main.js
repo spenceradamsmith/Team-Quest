@@ -2,7 +2,6 @@ const teams = window.teams;
 const borders = window.borders;
 
 let isRandomMode = false;
-let guesses = 0;
 const maxGuesses = 8;
 let gotCorrect = false;
 let gotWrong = false;
@@ -43,7 +42,6 @@ function toggleMode() {
 
 function startRandomGame() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    guesses = 0;
     guessedTeams = [];
     correctFilters = {
         league: null,
@@ -83,7 +81,6 @@ function startDailyGame() {
     if (loadDailyGameState()) {
         return;
     }
-    guesses = 0;
     guessedTeams = [];
     correctFilters = {
         league: null,
@@ -105,9 +102,9 @@ function startDailyGame() {
 
 function renderPreviousGuesses() {
     const guessList = guessedTeams;
-    for (let i = 0; i < guessList.length; i++) {
+    for (let i = 0; i < guessedTeams.length; i++) {
         const guessName = guessList[i];
-        const team = teams.find(t => t.name === guessName);
+        const team = teams.find(t => t.name.toLowerCase() === guessName);
         if (team) {
             renderGuess(team, i);
         }
@@ -218,7 +215,6 @@ function saveDailyGameState() {
     const key = `dailyGame-${today.year}-${today.month}-${today.day}`;
     const state = {
         answer,
-        guesses,
         guessedTeams: Array.from(guessedTeams),
         correctFilters,
         incorrectFilters: {
@@ -241,7 +237,6 @@ function loadDailyGameState() {
     try {
         const state = JSON.parse(stored);
         answer = state.answer;
-        guesses = state.guesses;
         guessedTeams = state.guessedTeams;
         correctFilters = state.correctFilters;
         incorrectFilters = {
@@ -286,7 +281,7 @@ function filterSuggestions() {
     datalist.innerHTML = "";
 
     const filtered = teams.filter(team => {
-        if (guessedTeams.includes(team.name)) {
+        if (guessedTeams.includes(team.name.toLowerCase())) {
             return false;
         }
         for (let field of ["league", "sport"]) {
@@ -314,7 +309,7 @@ function updateFilters(team) {
 
         if (guessedValue === answerValue) {
             correctFilters[field] = guessedValue;
-            incorrectFilters[field] = [];
+            incorrectFilters[field].clear();
         } else if (!correctFilters[field]) {
             incorrectFilters[field].add(guessedValue);
         }
@@ -327,7 +322,7 @@ function submitGuess() {
         return;
     }
     
-    if (guesses >= maxGuesses) {
+    if (guessedTeams.length >= maxGuesses) {
         return;
     }
 
@@ -337,7 +332,7 @@ function submitGuess() {
     }
 
     const input = document.getElementById("team-input").value.trim();
-    const team = teams.find(t => t.name === input);
+    const team = teams.find(t => t.name.toLowerCase() === input.toLowerCase());
     if (!team) {
         alert("Invalid team!");
         return;
@@ -355,7 +350,7 @@ function submitGuess() {
     }
 
     const guessRowContainers = document.querySelectorAll(".guess-row-container");
-    const currentRowContainer = guessRowContainers[guesses];
+    const currentRowContainer = guessRowContainers[guessedTeams.length];
     const teamNameBox = currentRowContainer.querySelector(".team-name-box");
     const guessBoxes = currentRowContainer.querySelectorAll(".guess-box");
     teamNameBox.textContent = team.name;
@@ -419,8 +414,11 @@ function submitGuess() {
             }
         }
     });
-    guessedTeams.push(team.name);
-    guesses++;
+    guessedTeams.push(team.name.toLowerCase());
+    if (!isRandomMode) {
+        saveDailyGameState();
+    }
+
     document.getElementById("team-input").value = "";
 
     updateFilters(team);
@@ -430,17 +428,13 @@ function submitGuess() {
         gotCorrect = true;
         //document.getElementById("result").textContent = `You got it in ${guesses} guesses!`;
         window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else if (guesses === maxGuesses) {
+    } else if (guessedTeams.length === maxGuesses) {
         gotWrong = true;
         //document.getElementById("result").textContent = `Game over! It was the ${answer.name}.`;
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    if (!isRandomMode) {
-        saveDailyGameState();
-    }
-
-    if (guesses < 5) {
+    if (guessedTeams.length < 5) {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
