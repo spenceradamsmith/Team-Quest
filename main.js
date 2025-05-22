@@ -42,6 +42,7 @@ function toggleMode() {
 }
 
 function startRandomGame() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     guesses = 0;
     guessedTeams.clear();
     correctFilters = {
@@ -78,6 +79,7 @@ function seededRandom(seed) {
 }
 
 function startDailyGame() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     guesses = 0;
     guessedTeams.clear();
     correctFilters = {
@@ -106,9 +108,7 @@ function clearGuesses() {
         const teamNameBox = container.querySelector(".team-name-box");
         const guessBoxes = container.querySelectorAll(".guess-box");
 
-        teamNameBox.textContent = teamNameBox.classList.contains("placeholder")
-            ? teamNameBox.textContent
-            : "Guess";
+        teamNameBox.textContent = `Guess #${Array.from(guessContainers).indexOf(container) + 1}`;
 
         teamNameBox.classList.add("placeholder");
 
@@ -124,10 +124,7 @@ function randomizeGame() {
     if (!isRandomMode) {
         return;
     }
-
-    answer = teams[Math.floor(Math.random() * teams.length)];
-    guesses = 0;
-    clearGuesses();
+    startRandomGame();
 }
 
 const colorMap = {
@@ -289,10 +286,18 @@ function submitGuess() {
 
     if (team.name === answer.name) {
         gotCorrect = true;
-        document.getElementById("result").textContent = `You got it in ${guesses} guesses!`;
+        //document.getElementById("result").textContent = `You got it in ${guesses} guesses!`;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     } else if (guesses === maxGuesses) {
         gotWrong = true;
-        document.getElementById("result").textContent = `Game over! It was the ${answer.name}.`;
+        //document.getElementById("result").textContent = `Game over! It was the ${answer.name}.`;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    if (guesses < 5) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
 
 }
