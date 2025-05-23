@@ -70,8 +70,6 @@
         </div>
     </div>
 
-    
-    
     <div class="game-container">
         <!-- The container for the guesses -->
         <div id="guess-container">
@@ -193,4 +191,34 @@
     <script src="teams.js"></script>
     <script src="borders.js"></script>
     <script src="main.js"></script>
+    
+    <!-- How to play Popup-->
+    <div id="how-to-play-modal" class="modal hidden">
+    <div class="modal-content">
+        <span class="close-button" onclick="hideRules()">&times;</span>
+        <h2>How to Play</h2>
+        <p class="centered-text">Guess the team based on the following clues: State, Colors, Titles, Last Title, League, Conference, and Sport.</p>
+        <p>The correct team can be from any of the following:</p>
+        <ul>
+            <li><strong>NBA</strong> : Eastern / Western</li>
+            <li><strong>NFL</strong> : AFC / NFC</li>
+            <li><strong>NHL</strong> : Eastern / Western</li>
+            <li><strong>MLB</strong> : American / National</li>
+            <li><strong>NCAA Basketball</strong> : Big Ten / SEC / ACC / Big 12 / Big East</li>
+            <li><strong>NCAA Football</strong> : Big Ten / SEC / ACC / Big 12</li>
+        </ul>
+        <p><strong>Green</strong> = Exact match.</p>
+        <p><strong>Yellow</strong> = Close match:</p>
+        <ul>
+            <li><strong>State</strong> : Borders the correct state.</li>
+            <li><strong>Colors</strong> : Only one of the colors is correct.</li>
+            <li><strong>Titles</strong> : Within 3 of the correct number.</li>
+            <li><strong>Last Title</strong>: Within 5 of the correct number.</li>
+        </ul>
+        <p><strong>Gray</strong> = Incorrect.</p>
+        <p class="centered-text">You get <strong>8 guesses</strong> to find the correct team.</p>
+        <p class="centered-text">A new daily team is released every day at midnight (EST)!</p>
+        </ul>
+    </div>
+</div>
 </body>

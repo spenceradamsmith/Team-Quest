@@ -197,6 +197,54 @@ button:active {
     font-size: 14px;
 }
 
+.modal {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 90%;
+    max-width: 800px;
+    background-color: white;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 10px 50px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: none;
+    position: relative;
+    font-size: 1rem;
+    text-align: left;
+}
+
+.modal-content h2 {
+    text-align: center;
+}
+
+.modal-content .centered-text {
+    text-align: center;
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: black;
+}
+
 @media (max-width: 600px) {
     .clue-full {
         display: none;
@@ -247,5 +295,34 @@ button:active {
         width: 150px;
         justify-content: flex-start;
         align-items: center;
+    }
+    .modal {
+        width: 95%;
+        top: 10%;
+        padding: 0 10px;
+    }
+    .modal-content {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+    .modal-content h2 {
+        font-size: 1.2rem;
+    }
+    .modal-content .centered-text {
+        text-align: center;
+        font-size: 0.95rem;
+    }
+    .modal-content ul {
+        padding-left: 18px;
+        margin-bottom: 8px;
+    }
+    .modal-content li {
+        margin-bottom: 4px;
+        font-size: 0.9rem;
+    }
+    .close-button {
+        top: 10px;
+        right: 12px;
+        font-size: 1.5rem;
     }
 }

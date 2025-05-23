@@ -25,6 +25,14 @@ function isMobileScreen() {
     return window.innerWidth <= 600;
 }
 
+function showRules() {
+    document.getElementById("how-to-play-modal").classList.remove("hidden");
+}
+
+function hideRules() {
+    document.getElementById("how-to-play-modal").classList.add("hidden");
+}
+
 let isRandomMode = false;
 const maxGuesses = 8;
 let gotCorrect = false;
@@ -48,7 +56,7 @@ function toggleMode() {
     const modeText = document.getElementById('mode-text');
     const modeIcon = document.getElementById('mode-icon');
     const randomizeContainer = document.getElementById('randomize-container');
-
+    hideRules();
     if (isRandomMode) {
         modeText.textContent = "Play Daily";
         modeIcon.src = "https://icons.veryicon.com/png/o/miscellaneous/face-monochrome-icon/calendar-249.png";
@@ -64,6 +72,7 @@ function toggleMode() {
 
 function startRandomGame() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    hideRules();
     guessedTeams = [];
     correctFilters = {
         league: null,
