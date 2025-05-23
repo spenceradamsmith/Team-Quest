@@ -7,11 +7,11 @@ const abbreviations = {
         "Eastern": "EAST",
         "American": "AM",
         "National": "NAT",
-        "BIG TEN": "BIG 10",
+        "BIG Ten": "BIG 10",
         "SEC": "SEC",
         "ACC": "ACC",
         "BIG 12": "BIG 12",
-        "BIG EAST": "BIG E",
+        "BIG East": "BIG E",
     },
     sport: {
         "Basketball": "BSK",
@@ -152,7 +152,6 @@ function refreshAbbreviations() {
         });
     });
 }
-
 
 function renderPreviousGuesses() {
     const guessList = guessedTeams;
