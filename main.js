@@ -77,7 +77,7 @@ function startRandomGame() {
     guessedTeams = [];
     correctFilters = {
         league: null,
-        sport: null,
+        sport: null
     };
     incorrectFilters = {
         league: new Set(),
@@ -114,10 +114,6 @@ function startDailyGame() {
         return;
     }
     guessedTeams = [];
-    correctFilters = {
-        league: null,
-        sport: null,
-    };
     incorrectFilters = {
         league: new Set(),
         sport: new Set(),
@@ -326,7 +322,10 @@ function loadDailyGameState() {
         const state = JSON.parse(stored);
         answer = teams.find(t => t.name === state.answer.name);
         guessedTeams = state.guessedTeams;
-        correctFilters = state.correctFilters;
+        correctFilters = {
+            league: typeof state.correctFilters.league === "string" ? state.correctFilters.league : null,
+            sport: typeof state.correctFilters.sport === "string" ? state.correctFilters.sport : null
+        };
         incorrectFilters = {
             league: new Set(state.incorrectFilters.league),
             sport: new Set(state.incorrectFilters.sport),
