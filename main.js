@@ -13,12 +13,13 @@ const abbreviations = {
         "Big 12": "BIG 12",
         "Big East": "BIG E",
     },
-    sport: {
-        "Basketball": "BSK",
-        "Football": "FB",
-        "Baseball": "BASE",
-        "Hockey": "HKY",
-    }
+};
+
+const sportIcons = {
+    Basketball: "https://cdn-icons-png.flaticon.com/128/5140/5140707.png",
+    Football: "https://cdn-icons-png.flaticon.com/128/6749/6749911.png",
+    Baseball: "https://cdn-icons-png.flaticon.com/128/6627/6627792.png",
+    Hockey: "https://cdn-icons-png.flaticon.com/128/6627/6627840.png"
 };
 
 function isMobileScreen() {
@@ -144,10 +145,23 @@ function refreshAbbreviations() {
             if (field === "conference" || field === "sport") {
                 const box = boxes[index];
                 const fullValue = box.getAttribute("data-full");
-                if (!fullValue) return;
+                if (!fullValue) {
+                    return;
+                }
 
-                const displayValue = isMobile ? (abbreviations[field][fullValue] || fullValue) : fullValue;
-                box.textContent = displayValue;
+                if (field === "sport" && isMobile) {
+                    box.innerHTML = "";
+                    const img = document.createElement("img");
+                    img.src = sportIcons[fullValue] || "";
+                    img.alt = fullValue;
+                    img.style.width = "15px";
+                    img.style.height = "15px";
+                    box.appendChild(img);
+                } else {
+                    const displayValue = isMobile ? (abbreviations[field][fullValue] || fullValue) : fullValue;
+                    box.textContent = displayValue;
+                }        
+
             }
         });
     });
@@ -194,10 +208,25 @@ function renderGuess(team, rowIndex) {
         } else {
             let value = team[field];
             box.setAttribute("data-full", value);
-            if (isMobileScreen() && (field === "conference" || field === "sport")) {
-                value = abbreviations[field][value] || value;
+
+            if (isMobileScreen()) {
+                if (field === "conference") {
+                    value = abbreviations[field][value] || value;
+                    box.textContent = value;
+                } else if (field === "sport") {
+                    box.innerHTML = "";
+                    const img = document.createElement("img");
+                    img.src = sportIcons[value] || ""; 
+                    img.alt = value;
+                    img.style.width = "20px";
+                    img.style.height = "20px";
+                    box.appendChild(img);
+                } else {
+                    box.textContent = value;
+                }
+            } else {
+                box.textContent = value;
             }
-            box.textContent = value;
         }
 
         if (team[field] === answer[field]) {
@@ -238,7 +267,6 @@ function renderGuess(team, rowIndex) {
     });
 }
 
-
 function clearGuesses() {
     document.getElementById("result").textContent = "";
     document.getElementById("team-input").value = "";
@@ -272,7 +300,9 @@ function saveDailyGameState() {
     const today = getEasternDate();
     const key = `dailyGame-${today.year}-${today.month}-${today.day}`;
     const state = {
-        answer,
+        answer: {
+            name: answer.name
+        },
         guessedTeams: Array.from(guessedTeams),
         correctFilters,
         incorrectFilters: {
@@ -294,7 +324,7 @@ function loadDailyGameState() {
     }
     try {
         const state = JSON.parse(stored);
-        answer = state.answer;
+        answer = teams.find(t => t.name === state.answer.name);
         guessedTeams = state.guessedTeams;
         correctFilters = state.correctFilters;
         incorrectFilters = {
@@ -439,10 +469,25 @@ function submitGuess() {
         } else {
             let value = team[field];
             box.setAttribute("data-full", value);
-            if (isMobileScreen() && (field === "conference" || field === "sport")) {
-                value = abbreviations[field][value] || value;
+    
+            if (isMobileScreen()) {
+                if (field === "conference") {
+                    value = abbreviations[field][value] || value;
+                    box.textContent = value;
+                } else if (field === "sport") {
+                    box.innerHTML = "";
+                    const img = document.createElement("img");
+                    img.src = sportIcons[value] || ""; 
+                    img.alt = value;
+                    img.style.width = "15px";
+                    img.style.height = "15px";
+                    box.appendChild(img);
+                } else {
+                    box.textContent = value;
+                }
+            } else {
+                box.textContent = value;
             }
-            box.textContent = value;
         }
 
         if (team[field] === answer[field]) {
