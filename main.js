@@ -7,11 +7,11 @@ const abbreviations = {
         "Eastern": "EAST",
         "American": "AM",
         "National": "NAT",
-        "Big Ten": "BIG 10",
+        "Big Ten": "Big 10",
         "SEC": "SEC",
         "ACC": "ACC",
-        "Big 12": "BIG 12",
-        "Big East": "BIG E",
+        "Big 12": "Big 12",
+        "Big East": "Big E",
     },
 };
 
