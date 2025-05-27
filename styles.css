@@ -382,7 +382,7 @@ button:active {
         flex: 1;
         width: 150px;
         text-align: center;
-        padding-left: 30px;
+        padding-left: 20px;
     }
     .modal {
         width: 95%;
