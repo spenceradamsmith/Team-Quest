@@ -22,11 +22,23 @@ body {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px;
-    align-items: center;
+}
+
+.top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 30px;
+}
+
+h1 {
+    flex: 1;
+    text-align: center;
+    padding-left: 150px;
 }
 
 .top-buttons {
-    position: absolute;
+    display: flex;
     top: 30px;
     right: 5%;
     display: flex;
@@ -35,8 +47,13 @@ body {
     align-items: flex-end;
 }
 
-#randomize-container {
+.randomize-wrapper.hidden {
     display: none;
+}
+
+.randomize-wrapper {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .header-button img {
@@ -51,7 +68,7 @@ body {
     max-width: 1400px;
     margin: 0 auto;
     padding: 20px;
-    padding-top: 335px;
+    padding-top: var(--header-height, 335px);
 }
 
 .input-container {
@@ -59,9 +76,9 @@ body {
     align-items: center;
     justify-content: center;
     gap: 10px;
+    padding-top: 10px;
     padding-bottom: 15px;
     margin-bottom: 10px 0;
-    margin-top: 125px;
 }
 
 .clue-row,
@@ -332,7 +349,7 @@ button:active {
         font-size: 16px;
     }
     .input-container {
-        margin-top: 90px;
+        padding-top: 15px;
     }
     .clue-box {
         font-size: 9px;
@@ -355,10 +372,10 @@ button:active {
         height: 10px;
     }
     h1 {
-        display: flex;
+        flex: 1;
         width: 150px;
-        justify-content: flex-start;
-        align-items: center;
+        text-align: center;
+        padding-left: 30px;
     }
     .modal {
         width: 95%;

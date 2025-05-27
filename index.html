@@ -22,25 +22,27 @@
 <body>
     <div class="header">
         <div class="header-inner">
-            <!-- Rules and switch buttons -->
-            <div class="top-buttons">
-                <button class="header-button" onclick="showRules()">
-                    <span>How to Play</span>
+            <!-- Header -->
+            <div class="top-row">
+                <h1>Guess the Team!</h1>
+                <!-- Rules and switch buttons -->
+                <div class="top-buttons">
+                    <button class="header-button" onclick="showRules()">
+                        <span>How to Play</span>
                     <img class="top-img" src="https://cdn-icons-png.flaticon.com/128/5831/5831763.png" alt="Info icon">
-                </button>
-                <button class="header-button" id="mode-toggle-button" onclick="toggleMode()">
-                    <span id="mode-text">Play More</span>
-                    <img id="mode-icon" class="top-img" src="https://cdn-icons-png.flaticon.com/128/3114/3114904.png" alt="More icon">
-                </button>
-                <div id="randomize-container" style="display: none">
-                    <button class="header-button" onclick="randomizeGame()">
-                        <span>Play Again</span>
-                        <img class="top-img" src="https://cdn-icons-png.flaticon.com/128/3839/3839944.png" alt="Randomize icon">
                     </button>
+                    <button class="header-button" id="mode-toggle-button" onclick="toggleMode()">
+                        <span id="mode-text">Play More</span>
+                        <img id="mode-icon" class="top-img" src="https://cdn-icons-png.flaticon.com/128/3114/3114904.png" alt="More icon">
+                    </button>
+                    <div id="randomize-container" class="randomize-wrapper hidden">
+                        <button class="header-button" onclick="randomizeGame()">
+                            <span>Play Again</span>
+                            <img class="top-img" src="https://cdn-icons-png.flaticon.com/128/3839/3839944.png" alt="Randomize icon">
+                        </button>
+                    </div>
                 </div>
             </div>
-            <!-- Header -->
-            <h1>Guess the Team!</h1>
             <!-- The input field for the user to enter their guess -->
             <div class="input-container">  
                 <input type="text" id="team-input" placeholder="Enter a team name..." list="team-suggestions" autocomplete="off">

@@ -149,7 +149,6 @@ let guessedTeams = [];
 
 function toggleMode() {
     isRandomMode = !isRandomMode;
-
     const modeText = document.getElementById('mode-text');
     const modeIcon = document.getElementById('mode-icon');
     const randomizeContainer = document.getElementById('randomize-container');
@@ -157,14 +156,15 @@ function toggleMode() {
     if (isRandomMode) {
         modeText.textContent = "Play Daily";
         modeIcon.src = "https://icons.veryicon.com/png/o/miscellaneous/face-monochrome-icon/calendar-249.png";
-        randomizeContainer.style.display = "flex";
+        randomizeContainer.classList.remove("hidden");
         startRandomGame();
     } else {
         modeText.textContent = "Play More";
         modeIcon.src = "https://cdn-icons-png.flaticon.com/128/3114/3114904.png";
-        randomizeContainer.style.display = "none";
+        randomizeContainer.classList.add("hidden");
         startDailyGame();
     }
+    updateGameContainerSpacing();
 }
 
 function startRandomGame() {
@@ -184,6 +184,17 @@ function startRandomGame() {
     clearGuesses();
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+function updateGameContainerSpacing() {
+    const header = document.querySelector('.header');
+    const gameContainer = document.querySelector('.game-container');
+    if (header && gameContainer) {
+        const height = header.offsetHeight;
+        gameContainer.style.paddingTop = `${height}px`; // fine-tuned value
+    }
+}
+window.addEventListener('DOMContentLoaded', updateGameContainerSpacing);
+window.addEventListener('resize', updateGameContainerSpacing);
 
 function getEasternDate() {
     const now = new Date();
