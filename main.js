@@ -170,6 +170,8 @@ function toggleMode() {
 function startRandomGame() {
     hideRules();
     hideResultModal();
+    gotCorrect = false;
+    gotWrong = false;
     guessedTeams = [];
     correctFilters = {
         league: null,
@@ -480,6 +482,10 @@ function filterSuggestions() {
     const datalist = document.getElementById("team-suggestions");
     datalist.innerHTML = "";
 
+    if (gotCorrect || gotWrong) {
+        return;
+    }
+
     const filtered = teams.filter(team => {
         if (guessedTeams.includes(team.name.toLowerCase())) {
             return false;
@@ -649,10 +655,12 @@ function submitGuess() {
     if (team.name === answer.name) {
         gotCorrect = true;
         showResultModal(true);
+        filterSuggestions();
     } else if (guessedTeams.length === maxGuesses) {
         gotWrong = true;
         window.scrollTo({ top: 100, behavior: 'smooth' });
         showResultModal(false);
+        filterSuggestions();
     } else {
         const currentRow = document.querySelectorAll(".guess-row-container")[guessedTeams.length - 1];
         if (currentRow) {
