@@ -3,8 +3,8 @@ const borders = window.borders;
 
 const abbreviations = {
     conference: {
-        "Western": "WEST",
-        "Eastern": "EAST",
+        "Western": "West",
+        "Eastern": "East",
         "American": "AM",
         "National": "NAT",
         "Big Ten": "Big 10",
@@ -95,13 +95,31 @@ function buildEmojiGrid() {
 
 function shareResult() {
     const grid = buildEmojiGrid();
-    const shareText = `I played Team Guess and ${gotCorrect ? `got it right in ${guessedTeams.length}!` : `got it wrong. The answer was the ${answer.name}.`}\n\nMy guesses:\n\n${grid}\n\nTry Team Guess: [your-game-url]`;
+    let shareText = "";
+    if (!isRandomMode) {
+        const today = getEasternDate();
+        const dateString = `${today.month}/${today.day}/${today.year}`;
+        shareText = `Team Guess ${dateString} : ${guessedTeams.length}/${maxGuesses}\n`;
+        if (gotCorrect) {
+            shareText += `I got it in ${guessedTeams.length}!`;
+        } else {
+            shareText += `I didn’t get it.`;
+        }
+    } else {
+        shareText = `I played Team Guess (Random Mode) and `;
+        if (gotCorrect) {
+            shareText += `got it in ${guessedTeams.length}!`;
+        } else {
+            shareText += `didn't get it.`;
+        }
+        shareText += ` The answer was the ${answer.name}.`;
+    }
+    shareText += `\n\nMy guesses:\n${grid}\n\nTry Team Guess: [your-game-url]`;
     if (navigator.share) {
         navigator.share({
             title: "Team Guess",
             text: shareText,
         }).catch(() => {
-            // fallback if user cancels or doesn't share
         });
     } else {
         navigator.clipboard.writeText(shareText).then(() => {
@@ -150,7 +168,6 @@ function toggleMode() {
 }
 
 function startRandomGame() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
     hideRules();
     hideResultModal();
     guessedTeams = [];
@@ -165,6 +182,7 @@ function startRandomGame() {
     filterSuggestions();
     answer = teams[Math.floor(Math.random() * teams.length)];
     clearGuesses();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function getEasternDate() {
@@ -489,17 +507,14 @@ function updateFilters(team) {
 
 function submitGuess() {
     if (!isRandomMode && (gotCorrect || gotWrong)) {
-        alert("You've already completed today's game!");
+        showResultModal(gotCorrect);
+        document.getElementById("team-input").value = "";
         return;
     }
     
     if (guessedTeams.length >= maxGuesses) {
-        alert("You've already used all of your guesses!");
-        return;
-    }
-
-    if (gotCorrect) {
-        alert("You already got it correct!");
+        showResultModal(gotCorrect);
+        document.getElementById("team-input").value = "";
         return;
     }
 
@@ -606,6 +621,10 @@ function submitGuess() {
             }
         }
     });
+    const isCorrectGuess = team.name === answer.name;
+    if (isCorrectGuess) {
+        gotCorrect = true;
+    }
     guessedTeams.push(team.name.toLowerCase());
     if (!isRandomMode) {
         saveDailyGameState();
@@ -618,11 +637,10 @@ function submitGuess() {
 
     if (team.name === answer.name) {
         gotCorrect = true;
-        window.scrollTo({ top: 0, behavior: 'smooth' });
         showResultModal(true);
     } else if (guessedTeams.length === maxGuesses) {
         gotWrong = true;
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ top: 100, behavior: 'smooth' });
         showResultModal(false);
     } else {
         const currentRow = document.querySelectorAll(".guess-row-container")[guessedTeams.length - 1];

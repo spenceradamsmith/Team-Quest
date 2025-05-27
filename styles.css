@@ -100,6 +100,7 @@ body {
     border: 1px solid #ccc;
     border-radius: 10px;
     font-size: 14px;
+    font-weight: bold;
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
@@ -108,6 +109,7 @@ body {
 
 .clue-box {
     border-color: black;
+    border-width: 2px;
 }
 
 #team-info p {
@@ -123,10 +125,17 @@ body {
 #team-logo {
     width: 200px;
     height: 200px;
-    padding: 10px;
     display: block;
     margin: 0 auto;
     object-fit: contain;
+}
+
+#result-buttons {
+    text-align: center;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
 }
 
 .guess-box.colors {
@@ -218,7 +227,7 @@ button:active {
 
 .modal {
     position: fixed;
-    top: 20%;
+    top: 37%;
     left: 50%;
     transform: translate(-50%, 0);
     width: 90%;
@@ -286,8 +295,7 @@ button:active {
         padding-bottom: 10px;
     }
     input {
-        width: 60%;
-        max-width: 200px;
+        width: 100%;
         font-size: 16px;
     }
     .input-container {
@@ -321,7 +329,7 @@ button:active {
     }
     .modal {
         width: 95%;
-        top: 7%;
+        top: 25%;
         padding: 0 10px;
     }
     .modal-content {
@@ -329,7 +337,7 @@ button:active {
         font-size: 0.9rem;
     }
     .modal-content h2 {
-        font-size: 1.2rem;
+        font-size: 2rem;
     }
     .modal-content .centered-text {
         text-align: center;
