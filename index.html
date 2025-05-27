@@ -6,6 +6,18 @@
     <title>Team Guess</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+<div id="result-modal" class="modal hidden">
+  <div class="modal-content" id="result-content">
+    <span class="close-button" onclick="hideResultModal()">&times;</span>
+    <h2 id="result-message">You Win!</h2>
+    <img id="team-logo" src="" alt="Team Logo">
+    <h3 id="team-name"></h3>
+    <div style="text-align: center; margin-top: 20px;">
+      <button onclick="playMore()">Play More</button>
+      <button onclick="shareResult()">Share</button>
+    </div>
+  </div>
+</div>
 <body>
     <div class="header">
         <div class="header-inner">

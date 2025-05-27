@@ -1130,7 +1130,7 @@ window.teams = [
     "league": "NHL",
     "conference": "Eastern",
     "sport": "Hockey",
-    "logo": "https://assets.nhle.com/logos/nhl/svg/DRW_dark.svg"
+    "logo": "https://assets.nhle.com/logos/nhl/svg/DET_dark.svg"
   },
   {
     "name": "Edmonton Oilers",

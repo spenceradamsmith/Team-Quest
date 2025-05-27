@@ -16,9 +16,9 @@ const abbreviations = {
 };
 
 const sportIcons = {
-    Basketball: "https://cdn-icons-png.flaticon.com/128/5140/5140707.png",
-    Football: "https://cdn-icons-png.flaticon.com/128/6749/6749911.png",
-    Baseball: "https://cdn-icons-png.flaticon.com/128/6627/6627792.png",
+    Basketball: "https://cdn-icons-png.flaticon.com/128/3858/3858976.png",
+    Football: "https://cdn-icons-png.flaticon.com/128/521/521789.png",
+    Baseball: "https://cdn-icons-png.flaticon.com/128/3210/3210549.png",
     Hockey: "https://cdn-icons-png.flaticon.com/128/6627/6627840.png"
 };
 
@@ -32,6 +32,84 @@ function showRules() {
 
 function hideRules() {
     document.getElementById("how-to-play-modal").classList.add("hidden");
+}
+
+function showResultModal(won) {
+    const modal = document.getElementById("result-modal");
+    const message = document.getElementById("result-message");
+    const logo = document.getElementById("team-logo");
+    const name = document.getElementById("team-name");
+
+    if (won) {
+        message.textContent = `You got it in ${guessedTeams.length}!`;
+    } else {
+        message.textContent = "Game Over!";
+    }
+    logo.src = answer.logo || "https://via.placeholder.com/80";
+    name.textContent = answer.name;
+
+    modal.classList.remove("hidden");
+}
+
+function playMore() {
+    hideResultModal();
+    if (!isRandomMode) {
+        toggleMode();
+    } else {
+        randomizeGame();
+    }
+}
+
+function hideResultModal() {
+    document.getElementById("result-modal").classList.add("hidden");
+}
+
+const emojiMap = {
+    green: "🟩",
+    yellow: "🟨",
+    gray: "⬜️",
+    placeholder: "⬛️"
+};
+
+function buildEmojiGrid() {
+    const guessContainers = document.querySelectorAll(".guess-row-container");
+    let grid = "";
+
+    for (let i = 0; i < guessedTeams.length; i++) {
+        const row = guessContainers[i].querySelectorAll(".guess-box");
+        row.forEach(box => {
+            if (box.classList.contains("green")) {
+                grid += emojiMap.green;
+            } else if (box.classList.contains("yellow")) {
+                grid += emojiMap.yellow;
+            } else if (box.classList.contains("gray")) {
+                grid += emojiMap.gray;
+            } else {
+                grid += emojiMap.placeholder;
+            }
+        });
+        grid += "\n";
+    }
+    return grid.trim();
+}
+
+function shareResult() {
+    const grid = buildEmojiGrid();
+    const shareText = `I played Team Guess and ${gotCorrect ? `got it right in ${guessedTeams.length}!` : `got it wrong. The answer was the ${answer.name}.`}\n\nMy guesses:\n\n${grid}\n\nTry Team Guess: [your-game-url]`;
+    if (navigator.share) {
+        navigator.share({
+            title: "Team Guess",
+            text: shareText,
+        }).catch(() => {
+            // fallback if user cancels or doesn't share
+        });
+    } else {
+        navigator.clipboard.writeText(shareText).then(() => {
+            alert("Copied to clipboard!");
+        }).catch(() => {
+            alert("Unable to copy to clipboard.");
+        });
+    }
 }
 
 let isRandomMode = false;
@@ -74,6 +152,7 @@ function toggleMode() {
 function startRandomGame() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     hideRules();
+    hideResultModal();
     guessedTeams = [];
     correctFilters = {
         league: null,
@@ -110,7 +189,8 @@ function seededRandom(seed) {
 
 function startDailyGame() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    if (loadDailyGameState()) {
+    const loaded = loadDailyGameState();
+    if (loaded) {
         return;
     }
     guessedTeams = [];
@@ -279,7 +359,7 @@ function clearGuesses() {
 
         guessBoxes.forEach(box => {
             box.className = "guess-box placeholder";
-            box.textContent = "";
+            box.removeAttribute("data-full");
             box.innerHTML = "";
         });
     });
@@ -320,6 +400,7 @@ function loadDailyGameState() {
     }
     try {
         const state = JSON.parse(stored);
+        clearGuesses();
         answer = teams.find(t => t.name === state.answer.name);
         guessedTeams = state.guessedTeams;
         correctFilters = {
@@ -331,19 +412,18 @@ function loadDailyGameState() {
             sport: new Set(state.incorrectFilters.sport),
         };
         gotCorrect = state.gotCorrect;
-        gotWrong = state.gotWrong;
-        
+        gotWrong = state.gotWrong;  
         filterSuggestions();
-        clearGuesses();
         renderPreviousGuesses();
+        if (guessedTeams.length === maxGuesses) {
+            showResultModal(gotCorrect);
+        }
         return true;
     } catch (e) {
         console.error("Failed to load saved game", e);
         return false;
     }
 }
-
-
 
 const colorMap = {
   "Red": "#FF0000",
@@ -414,6 +494,7 @@ function submitGuess() {
     }
     
     if (guessedTeams.length >= maxGuesses) {
+        alert("You've already used all of your guesses!");
         return;
     }
 
@@ -535,22 +616,20 @@ function submitGuess() {
     updateFilters(team);
     filterSuggestions();
 
-
-
     if (team.name === answer.name) {
         gotCorrect = true;
-        //document.getElementById("result").textContent = `You got it in ${guesses} guesses!`;
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        showResultModal(true);
     } else if (guessedTeams.length === maxGuesses) {
         gotWrong = true;
-        //document.getElementById("result").textContent = `Game over! It was the ${answer.name}.`;
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        showResultModal(false);
     } else {
         const currentRow = document.querySelectorAll(".guess-row-container")[guessedTeams.length - 1];
         if (currentRow) {
             const rect = currentRow.getBoundingClientRect();
             const offset = rect.bottom + window.scrollY;
-            const padding = 20; // adjust if needed
+            const padding = 20;
 
             window.scrollTo({
                 top: offset - window.innerHeight + padding,

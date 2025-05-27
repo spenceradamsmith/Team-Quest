@@ -110,6 +110,25 @@ body {
     border-color: black;
 }
 
+#team-info p {
+    margin: 5px 0;
+}
+
+#result-modal h3#team-name {
+    text-align: center;
+    font-size: 1.4rem;
+    margin-top: 10px;
+}
+
+#team-logo {
+    width: 200px;
+    height: 200px;
+    padding: 10px;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
+}
+
 .guess-box.colors {
     display: flex;
     justify-content: center;
@@ -279,8 +298,12 @@ button:active {
         padding: 8px;
     }
     .guess-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
         width: 100%;
-        font-size: 10px;
+        font-size: 9px;
         padding: 8px;
     }
     .team-name-box {
@@ -298,7 +321,7 @@ button:active {
     }
     .modal {
         width: 95%;
-        top: 10%;
+        top: 7%;
         padding: 0 10px;
     }
     .modal-content {
