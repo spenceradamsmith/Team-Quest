@@ -241,6 +241,39 @@ button:active {
     z-index: 2000;
 }
 
+#how-to-play-modal {
+    top: 30%;
+    height: 65vh;
+}
+
+#how-to-play-modal .modal-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.modal-header {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    padding: 20px 40px 10px;
+    z-index: 1;
+}
+
+.modal-header h2 {
+    margin: 0;
+    text-align: center;
+    font-size: 28px;
+}
+
+.modal-body {
+    overflow-y: auto;
+    padding: 20px 40px;
+}
+
 .modal.hidden {
     display: none;
 }
@@ -331,6 +364,13 @@ button:active {
         width: 95%;
         top: 25%;
         padding: 0 10px;
+    }
+    #how-to-play-modal {
+        top: 15%;
+    }
+    #how-to-play-modal .modal-content {
+        max-height: 80vh;
+        overflow-y: auto;
     }
     .modal-content {
         padding: 10px 15px;
