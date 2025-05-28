@@ -35,7 +35,7 @@ window.teams = [
   {
     "name": "Charlotte Hornets",
     "state": "NC",
-    "colors": "Purple/Teal",
+    "colors": "Purple/Blue",
     "titles": 0,
     "lastTitle": "None",
     "league": "NBA",

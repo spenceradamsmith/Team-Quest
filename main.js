@@ -466,8 +466,6 @@ const colorMap = {
   "Gray": "#808080",
   "Orange": "#FFA500",
   "White": "#FFFFFF",
-  "Gold": "#FFD700",
-  "Teal": "#008080"
 };
 
 window.addEventListener("DOMContentLoaded", () => {
