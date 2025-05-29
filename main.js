@@ -554,6 +554,10 @@ function submitGuess() {
         alert("Invalid team!");
         return;
     }
+    if (guessedTeams.includes(team.name.toLowerCase())) {
+        alert("Invalid team!");
+        return;
+    }
 
     for (let field of ["league", "sport"]) {
         if (correctFilters[field] && team[field] !== correctFilters[field]) {
