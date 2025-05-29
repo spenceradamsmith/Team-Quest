@@ -121,6 +121,7 @@ h1 {
 
 .row-container {
     padding-bottom: 15px;
+    overflow-x: auto;
 }
 
 .team-name-box {
