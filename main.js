@@ -114,7 +114,7 @@ function shareResult() {
         }
         shareText += ` The answer was the ${answer.name}.`;
     }
-    shareText += `\n\nMy guesses:\n${grid}\n\nTry Team Quest: [your-game-url]`;
+    shareText += `\n\nMy guesses:\n${grid}\n\nTry Team Quest: teamquestgame.com`;
     if (navigator.share) {
         navigator.share({
             title: "Team Quest",
