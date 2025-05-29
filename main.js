@@ -245,7 +245,7 @@ function refreshAbbreviations() {
     guessRows.forEach(row => {
         const boxes = row.querySelectorAll(".guess-box");
 
-        const fieldOrder = ["state", "colors", "titles", "lastTitle", "league", "conference", "sport"];
+        const fieldOrder = ["sport", "league", "conference", "state", "colors", "lastTitle", "titles"];
 
         fieldOrder.forEach((field, index) => {
             if (field === "conference" || field === "sport") {
@@ -293,7 +293,7 @@ function renderGuess(team, rowIndex) {
     teamNameBox.textContent = team.name;
     teamNameBox.classList.remove("placeholder");
 
-    const fields = ["state", "colors", "titles", "lastTitle", "league", "conference", "sport"];
+    const fields = ["sport", "league", "conference", "state", "colors", "lastTitle", "titles"];
     fields.forEach((field, index) => {
         const box = guessBoxes[index];
         box.classList.remove("placeholder");
@@ -577,7 +577,7 @@ function submitGuess() {
     teamNameBox.textContent = team.name;
     teamNameBox.classList.remove("placeholder");
 
-    const fields = ["state", "colors", "titles", "lastTitle", "league", "conference", "sport"];
+    const fields = ["sport", "league", "conference", "state", "colors", "lastTitle", "titles"];
     fields.forEach((field, index) => {
         const box = guessBoxes[index];
         box.classList.remove("placeholder");
