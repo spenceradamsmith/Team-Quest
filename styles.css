@@ -441,6 +441,6 @@ button:active {
 @media (max-width: 400px) {
   .clue-box {
     font-size: 7px;
-    padding: 6px;
+    padding: 5px;
   }
 }
