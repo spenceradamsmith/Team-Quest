@@ -106,7 +106,7 @@ h1 {
 .clue-row,
 .guess-row {
     display: grid;
-    grid-template-columns: repeat(7, minmax(50px, 1fr));
+    grid-template-columns: repeat(7, 1fr);
     gap: 5px;
     width: 100%;
     margin: 0;
@@ -440,6 +440,6 @@ button:active {
 
 body.display-zoomed .clue-box,
 body.display-zoomed .guess-box {
-  font-size: 10px;
+  font-size: 8px;
   padding: 6px 8px;
 }
