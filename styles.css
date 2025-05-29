@@ -121,7 +121,6 @@ h1 {
 
 .row-container {
     padding-bottom: 15px;
-    overflow-x: auto;
 }
 
 .team-name-box {
@@ -439,8 +438,7 @@ button:active {
     }
 }
 
-body.display-zoomed .clue-box,
-body.display-zoomed .guess-box {
-  font-size: 8px;
+body.display-zoomed .clue-box {
+  font-size: 4px;
   padding: 6px 8px;
 }
