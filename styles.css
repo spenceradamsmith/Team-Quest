@@ -185,10 +185,11 @@ h1 {
 }
 
 .color-circle {
-    width: 15px;
-    height: 15px;
+    width: 1em;
+    height: 1em;
     border-radius: 50%;
     border: 1px solid #ccc;
+    flex-shrink: 0;
 }
 
 .guess-box.green {
@@ -435,4 +436,23 @@ button:active {
         right: 12px;
         font-size: 2rem;
     }
+}
+
+@media (max-width: 600px) and (max-resolution: 2dppx) {
+  .clue-box,
+  .guess-box {
+    font-size: 10px;  /* smaller font size */
+    padding: 6px 8px; /* reduce padding */
+  }
+  .team-name-box {
+    font-size: 12px;
+  }
+  input {
+    font-size: 14px;
+  }
+  button {
+    font-size: 14px;
+    padding: 6px 12px;
+    height: auto;
+  }
 }
