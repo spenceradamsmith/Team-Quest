@@ -192,6 +192,11 @@ h1 {
     flex-shrink: 0;
 }
 
+.team-name-box.green {
+    background-color: #6aaa64;
+    color: white;
+}
+
 .guess-box.green {
     background-color: #6aaa64;
     color: white;

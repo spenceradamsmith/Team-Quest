@@ -298,7 +298,7 @@ function renderGuess(team, rowIndex) {
         const box = guessBoxes[index];
         box.classList.remove("placeholder");
 
-        if (field == "colors") {
+        if (field === "colors") {
             box.classList.add("colors");
             box.innerHTML = "";
             const [color1, color2] = team[field].split("/");
@@ -386,6 +386,7 @@ function clearGuesses() {
         teamNameBox.textContent = `Guess #${Array.from(guessContainers).indexOf(container) + 1}`;
 
         teamNameBox.classList.add("placeholder");
+        teamNameBox.classList.remove("green");
 
         guessBoxes.forEach(box => {
             box.className = "guess-box placeholder";
@@ -447,6 +448,21 @@ function loadDailyGameState() {
         renderPreviousGuesses();
         if (guessedTeams.length === maxGuesses) {
             showResultModal(gotCorrect);
+        }
+        if (gotCorrect) {
+            const guessRowContainers = document.querySelectorAll(".guess-row-container");
+            const correctRowIndex = guessedTeams.findIndex(
+            g => (typeof g === "string" ? g : g.name) === answer.name.toLowerCase()
+            );
+            if (correctRowIndex !== -1) {
+            const correctRow = guessRowContainers[correctRowIndex];
+            if (correctRow) {
+                const teamNameBox = correctRow.querySelector(".team-name-box");
+                if (teamNameBox) {
+                teamNameBox.classList.add("green");
+                }
+            }
+            }
         }
         return true;
     } catch (e) {
@@ -612,7 +628,6 @@ function submitGuess() {
         } else {
             box.classList.add("gray");
         }
-
         if (field === "titles") {
             if (parseInt(team[field]) < parseInt(answer[field])) {
                 box.textContent += " ↑";
@@ -638,6 +653,7 @@ function submitGuess() {
     const isCorrectGuess = team.name === answer.name;
     if (isCorrectGuess) {
         gotCorrect = true;
+        teamNameBox.classList.add("green");
     }
     guessedTeams.push(team.name.toLowerCase());
     if (!isRandomMode) {
