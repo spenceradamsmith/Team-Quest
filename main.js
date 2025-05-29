@@ -94,10 +94,6 @@ function buildEmojiGrid() {
 }
 
 function isDisplayZoomed() {
-  return window.screen.width > window.innerWidth;
-}
-
-function isDisplayZoomed() {
   const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
   // Check for smaller viewport than screen (possible Display Zoom)
   const zoomed = window.screen.width > window.innerWidth;
