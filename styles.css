@@ -106,7 +106,7 @@ h1 {
 .clue-row,
 .guess-row {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(7, minmax(50px, 1fr));
     gap: 5px;
     width: 100%;
     margin: 0;
@@ -438,21 +438,8 @@ button:active {
     }
 }
 
-@media (max-width: 600px) and (max-resolution: 2dppx) {
-  .clue-box,
-  .guess-box {
-    font-size: 10px;  /* smaller font size */
-    padding: 6px 8px; /* reduce padding */
-  }
-  .team-name-box {
-    font-size: 12px;
-  }
-  input {
-    font-size: 14px;
-  }
-  button {
-    font-size: 14px;
-    padding: 6px 12px;
-    height: auto;
-  }
+body.display-zoomed .clue-box,
+body.display-zoomed .guess-box {
+  font-size: 10px;
+  padding: 6px 8px;
 }

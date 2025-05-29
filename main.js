@@ -93,6 +93,25 @@ function buildEmojiGrid() {
     return grid.trim();
 }
 
+function isDisplayZoomed() {
+  return window.screen.width > window.innerWidth;
+}
+
+function isDisplayZoomed() {
+  const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
+  // Check for smaller viewport than screen (possible Display Zoom)
+  const zoomed = window.screen.width > window.innerWidth;
+  // Apply only on iOS devices with smaller viewport
+  return isIOS && zoomed;
+}
+
+if (isDisplayZoomed()) {
+  document.body.classList.add('display-zoomed');
+} else {
+  document.body.classList.remove('display-zoomed');
+}
+
+
 function shareResult() {
     const grid = buildEmojiGrid();
     let shareText = "";
