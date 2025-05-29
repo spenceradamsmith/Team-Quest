@@ -78,6 +78,11 @@ h1 {
     justify-content: flex-end;
 }
 
+.header-button {
+    align-items: center;
+    padding: 0 clamp(12px, 1.5vw, 20px);
+}
+
 .header-button img {
     width: 20px;
     height: 20px;
