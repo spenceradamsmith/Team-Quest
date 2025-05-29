@@ -99,14 +99,14 @@ function shareResult() {
     if (!isRandomMode) {
         const today = getEasternDate();
         const dateString = `${today.month}/${today.day}/${today.year}`;
-        shareText = `Team Guess ${dateString} : ${guessedTeams.length}/${maxGuesses}\n`;
+        shareText = `Team Quest ${dateString} : ${guessedTeams.length}/${maxGuesses}\n`;
         if (gotCorrect) {
             shareText += `I got it in ${guessedTeams.length}!`;
         } else {
             shareText += `I didn’t get it.`;
         }
     } else {
-        shareText = `I played Team Guess (Random Mode) and `;
+        shareText = `I played Team Quest (Random Mode) and `;
         if (gotCorrect) {
             shareText += `got it in ${guessedTeams.length}!`;
         } else {
@@ -114,10 +114,10 @@ function shareResult() {
         }
         shareText += ` The answer was the ${answer.name}.`;
     }
-    shareText += `\n\nMy guesses:\n${grid}\n\nTry Team Guess: [your-game-url]`;
+    shareText += `\n\nMy guesses:\n${grid}\n\nTry Team Quest: [your-game-url]`;
     if (navigator.share) {
         navigator.share({
-            title: "Team Guess",
+            title: "Team Quest",
             text: shareText,
         }).catch(() => {
         });
@@ -235,7 +235,6 @@ function startDailyGame() {
     const seed = todayET.year * 10000 + todayET.month * 100 + todayET.day;
     const rngIndex = seededRandom(seed) % teams.length;
     answer = teams[rngIndex]; 
-
     saveDailyGameState();
 }
 
