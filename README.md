@@ -1,6 +1,6 @@
 Team Quest
 
-Team Quest is a sports-themed guessing game where you try to identify a secret team based on clues like state, colors, championships, last title year, league, conference, and sport.
+Team Quest is a sports-themed guessing game where you try to identify a sports team based on clues like sport, league, conference, state, colors, last title year, and titles.
 
 How to Play:
 
