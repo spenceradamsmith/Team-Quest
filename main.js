@@ -242,7 +242,7 @@ function startDailyGame() {
     const todayET = getEasternDate();
     const seed = todayET.year * 10000 + todayET.month * 100 + todayET.day;
     const rngIndex = seededRandom(seed) % teams.length;
-    answer = teams[rngIndex]; 
+    answer = teams[0]; 
     saveDailyGameState();
 }
 
