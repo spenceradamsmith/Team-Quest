@@ -22,6 +22,14 @@ const sportIcons = {
     Hockey: "https://cdn-icons-png.flaticon.com/128/6627/6627840.png"
 };
 
+const leagueIcons = {
+    NBA: "https://cdn.freebiesupply.com/images/large/2x/nba-logo-transparent.png",
+    NFL: "https://upload.wikimedia.org/wikipedia/en/thumb/a/a2/National_Football_League_logo.svg/1200px-National_Football_League_logo.svg.png",
+    MLB: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Major_League_Baseball_logo.svg/2560px-Major_League_Baseball_logo.svg.png",
+    NHL: "https://upload.wikimedia.org/wikipedia/en/thumb/3/3a/05_NHL_Shield.svg/1200px-05_NHL_Shield.svg.png",
+    NCAA: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/NCAA_logo.svg/2048px-NCAA_logo.svg.png"
+};
+
 function isMobileScreen() {
     return window.innerWidth <= 600;
 }
@@ -248,26 +256,36 @@ function refreshAbbreviations() {
         const fieldOrder = ["sport", "league", "conference", "state", "colors", "lastTitle", "titles"];
 
         fieldOrder.forEach((field, index) => {
-            if (field === "conference" || field === "sport") {
+            if (field === "conference" || field === "sport" || field === "league") {
                 const box = boxes[index];
                 const fullValue = box.getAttribute("data-full");
                 if (!fullValue) {
                     return;
                 }
-
-                if (field === "sport" && isMobile) {
-                    box.innerHTML = "";
-                    const img = document.createElement("img");
-                    img.src = sportIcons[fullValue] || "";
-                    img.alt = fullValue;
-                    img.style.width = "15px";
-                    img.style.height = "15px";
-                    box.appendChild(img);
+                if (isMobile) {
+                    if (field === "sport") {
+                        box.innerHTML = "";
+                        const img = document.createElement("img");
+                        img.src = sportIcons[fullValue] || "";
+                        img.alt = fullValue;
+                        img.style.width = "15px";
+                        img.style.height = "15px";
+                        box.appendChild(img);
+                    } else if (field === "league") {
+                        box.innerHTML = "";
+                        const img = document.createElement("img");
+                        img.src = leagueIcons[fullValue] || "";
+                        img.alt = fullValue;
+                        img.style.width = "15px";
+                        img.style.height = "15px";
+                        box.appendChild(img);
+                    } else {
+                        const displayValue = abbreviations[field]?.[fullValue] || fullValue;
+                        box.textContent = displayValue;
+                    }
                 } else {
-                    const displayValue = isMobile ? (abbreviations[field][fullValue] || fullValue) : fullValue;
-                    box.textContent = displayValue;
-                }        
-
+                    box.textContent = fullValue;
+                }
             }
         });
     });
@@ -319,10 +337,14 @@ function renderGuess(team, rowIndex) {
                 if (field === "conference") {
                     value = abbreviations[field][value] || value;
                     box.textContent = value;
-                } else if (field === "sport") {
+                } else if (field === "sport" || field == "league") {
                     box.innerHTML = "";
                     const img = document.createElement("img");
-                    img.src = sportIcons[value] || ""; 
+                    if (field === "sport") {
+                        img.src = sportIcons[value] || ""; 
+                    } else {
+                        img.src = leagueIcons[value] || ""; 
+                    }
                     img.alt = value;
                     img.style.width = "20px";
                     img.style.height = "20px";
@@ -603,10 +625,14 @@ function submitGuess() {
                 if (field === "conference") {
                     value = abbreviations[field][value] || value;
                     box.textContent = value;
-                } else if (field === "sport") {
+                } else if (field === "sport" || field === "league") {
                     box.innerHTML = "";
                     const img = document.createElement("img");
-                    img.src = sportIcons[value] || ""; 
+                    if (field === "sport") {
+                        img.src = sportIcons[value] || ""; 
+                    } else {
+                        img.src = leagueIcons[value] || ""; 
+                    }
                     img.alt = value;
                     img.style.width = "15px";
                     img.style.height = "15px";

@@ -151,6 +151,16 @@ h1 {
     text-overflow: ellipsis;
 }
 
+.guess-box img {
+    height: 28px;
+    max-height: 32px;
+    min-width: 32px;
+    max-width: 48px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
 .clue-box {
     border-color: black;
     border-width: 2px;
@@ -445,6 +455,15 @@ button:active {
         top: 10px;
         right: 12px;
         font-size: 2rem;
+    }
+    .guess-box img {
+        height: 24px;
+        max-height: 28px;
+        min-width: 28px;
+        max-width:44px;
+        object-fit: contain;
+        display: inline-block;
+        margin: 0 auto;
     }
 }
 
