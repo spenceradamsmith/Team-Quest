@@ -239,7 +239,7 @@ window.teams = [
     "league": "NBA",
     "conference": "Eastern",
     "sport": "Basketball",
-    "logo": "https://cdn.nba.com/logos/nba/1610612753/primary/L/logo.svg"
+    "logo": "https://cdn.nba.com/teams/uploads/sites/1610612753/2025/06/Orlando-Magic-Global-Logo.svg"
   },
   {
     "name": "Philadelphia 76ers",
