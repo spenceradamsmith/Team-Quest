@@ -2010,7 +2010,7 @@ window.teams = [
     "league": "NCAA",
     "conference": "Big 12",
     "sport": "Basketball",
-    "logo": "https://static.wikia.nocookie.net/collegefootballmania/images/4/41/Cincinnati-Bearcats-Logo.png/revision/latest?cb=20240514030256"
+    "logo": "https://loodibee.com/wp-content/uploads/Cincinnati_Bearcats_logo.png"
   },
   {
     "name": "Colorado Buffaloes Basketball",
@@ -2868,7 +2868,7 @@ window.teams = [
     "league": "NCAA",
     "conference": "Big 12",
     "sport": "Football",
-    "logo": "https://static.wikia.nocookie.net/collegefootballmania/images/4/41/Cincinnati-Bearcats-Logo.png/revision/latest?cb=20240514030256"
+    "logo": "https://loodibee.com/wp-content/uploads/Cincinnati_Bearcats_logo.png"
   },
   {
     "name": "Colorado Buffaloes Football",
