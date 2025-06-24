@@ -13,18 +13,18 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     font-size: clamp(14px, 1.2vw, 18px);
-    background-color: white;
+    background-color: rgb(20, 20, 20);
     margin: 0;
 }
 
 .header {
-    background-color: white;
+    background-color: rgb(20, 20, 20);
     position: fixed;
     z-index: 1000;
     top: 0;
     width: 100%;
     padding: 20px 0 0;
-    border-bottom: 2px solid rgb(228, 227, 230);
+    border-bottom: 2px solid rgb(45, 45, 47);
 }
 
 .header-inner {
@@ -41,7 +41,7 @@ body {
 }
 
 @font-face {
-  font-family: 'TitleFont';
+  font-family: 'NBAKnicks';
   src: url('NBAKnicks.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
@@ -51,11 +51,11 @@ h1 {
     flex: 1;
     text-align: center;
     padding-left: 150px;
-    font-family: 'TitleFont', sans-serif;
+    font-family: 'NBAKnicks', sans-serif;
     font-size: clamp(36px, 6vw, 50px);
     font-weight: normal;
     letter-spacing: 5px;
-    color: black;
+    color: rgb(218, 218, 218);
     text-transform: uppercase;
 }
 
@@ -89,6 +89,7 @@ h1 {
     vertical-align: middle;
     display: inline-block;
     margin-left: 5px;
+    filter: invert(89%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(90%);
 }
 
 .game-container {
@@ -118,7 +119,7 @@ h1 {
 }
 
 .guess-row-container {
-    border: 2px solid rgb(228, 227, 230);
+    border: 2px solid rgb(45, 45, 47);
     border-radius: 10px;
     padding: 10px;
     margin: 10px 0;
@@ -131,18 +132,18 @@ h1 {
 .team-name-box {
     grid-column: 1 / -1;
     padding: 10px;
-    border: 1px solid rgb(228, 227, 230);
+    border: 1px solid rgb(45, 45, 47);
     border-radius: 10px;
     font-size: 16px;
     text-align: center;
     margin-bottom: 5px;
-    color: black;
+    color: rgb(218, 218, 218);
 }
 
 .clue-box,
 .guess-box {
     padding: 10px;
-    border: 1px solid rgb(228, 227, 230);
+    border: 1px solid rgb(45, 45, 47);
     border-radius: 10px;
     font-size: 14px;
     font-weight: bold;
@@ -162,11 +163,14 @@ h1 {
     margin: 0 auto;
 }
 
+img.sport-icon {
+    filter: invert(89%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(90%);
+}
+
 .clue-box {
-    border-color: rgb(228, 227, 230);
-    background-color: rgb(228, 227, 230);
+    border-color: rgb(45, 45, 47);
     border-width: 2px;
-    color: black;
+    color: rgb(218, 218, 218);
 }
 
 #team-info p {
@@ -203,41 +207,41 @@ h1 {
 }
 
 .color-circle {
-    width: 2em;
+    width: 1em;
     height: 1em;
-    border-radius: 10px;
-    border: 1px solid rgb(228, 227, 230);
+    border-radius: 50%;
+    border: 1px solid rgb(218, 218, 218);
     flex-shrink: 0;
 }
 
 .team-name-box.green {
     background-color: #6aaa64;
-    color: black;
+    color: rgb(218, 218, 218);
 }
 
 .guess-box.green {
     background-color: #6aaa64;
-    color: black;
+    color: rgb(218, 218, 218);
 }
 
 .guess-box.yellow {
     background-color: #c9b458;
-    color: black;
+    color: rgb(218, 218, 218);
 }
 
 .guess-box.gray {
-    background-color: rgb(228, 227, 230);
-    color: black;
+    background-color: rgb(45, 45, 47);
+    color: rgb(218, 218, 218);
 }
 
 .guess-box.placeholder {
-    background-color: rgb(228, 227, 230);
+    background-color: rgb(45, 45, 47);
     color: transparent;
 }
 
 .team-name-box.placeholder {
-    background-color: rgb(228, 227, 230);
-    color: black;
+    background-color: rgb(45, 45, 47);
+    color: rgb(218, 218, 218);
     font-size: 16px;
 }
 
@@ -245,9 +249,9 @@ input {
     width: 75%;
     padding: 10px;
     margin: 10px 10px 10px 0;
-    border: 2px solid rgb(228, 227, 230);
-    background-color: white;
-    color: black;
+    border: 2px solid rgb(45, 45, 47);
+    background-color: rgb(20, 20, 20);
+    color: rgb(218, 218, 218);
     border-radius: 10px;
     font-size: clamp(14px, 1.2vw, 16px);
     outline: none;
@@ -265,9 +269,9 @@ input[list] {
 
 button {
     height: 43px;
-    background-color: rgb(228, 227, 230);
-    color: black;
-    border: 2px solid rgb(228, 227, 230);
+    background-color: rgb(20, 20, 20);
+    color: rgb(218, 218, 218);
+    border: 2px solid rgb(45, 45, 47);
     border-radius: 10px;
     font-size: clamp(14px, 1vw, 16px);
     padding: clamp(8px, 1vw, 12px) clamp(12px, 1.5vw, 20px);
@@ -275,8 +279,12 @@ button {
     cursor: pointer;
 }
 
+button:hover {
+    background-color: rgb(45, 45, 47);
+}
+
 button:active {
-    background-color: white;
+    background-color: rgb(20, 20, 20);
 }
 
 #result {
@@ -303,8 +311,8 @@ button:active {
     transform: translate(-50%, 0);
     width: 90%;
     max-width: 800px;
-    background-color: white;
-    border: 2px solid rgb(228, 227, 230);
+    background-color: rgb(20, 20, 20);
+    border: 2px solid rgb(45, 45, 47);
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -329,7 +337,7 @@ button:active {
 .modal-header {
     position: sticky;
     top: 0;
-    background-color: white;
+    background-color: rgb(20, 20, 20);
     padding: 20px 40px 10px;
     z-index: 1;
 }
@@ -338,7 +346,7 @@ button:active {
     margin: 0;
     text-align: center;
     font-size: 28px;
-    color: black;
+    color: rgb(218, 218, 218);
 }
 
 .modal-body {
@@ -351,7 +359,7 @@ button:active {
 }
 
 .modal-content {
-    background-color: white;
+    background-color: rgb(20, 20, 20);
     padding: 10px 50px;
     border-radius: 10px;
     width: 100%;
@@ -359,7 +367,7 @@ button:active {
     position: relative;
     font-size: 1rem;
     text-align: left;
-    color: black;
+    color: rgb(218, 218, 218);
 }
 
 .modal-content h2 {
@@ -376,7 +384,7 @@ button:active {
     right: 20px;
     font-size: 2rem;
     cursor: pointer;
-    color: black;
+    color: rgb(218, 218, 218);
 }
 
 @media (max-width: 600px) {
@@ -392,7 +400,7 @@ button:active {
         padding-top: 325px;
     }
     .guess-row-container {
-        border: 2px solid rgb(228, 227, 230);
+        border: 2px solid rgb(45, 45, 47);
         border-radius: 10px;
         padding: 10px;
         margin: 10px 0;
