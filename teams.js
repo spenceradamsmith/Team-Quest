@@ -431,7 +431,7 @@ window.teams = [
   {
     "name": "Denver Broncos",
     "state": "CO",
-    "colors": "Orange/Blue",
+    "colors": "Blue/Orange",
     "titles": 3,
     "lastTitle": 2015,
     "league": "NFL",

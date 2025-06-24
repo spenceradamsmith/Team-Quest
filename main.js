@@ -271,6 +271,7 @@ function refreshAbbreviations() {
                         img.style.width = "15px";
                         img.style.height = "15px";
                         box.appendChild(img);
+                        img.classList.add("sport-icon");
                     } else if (field === "league") {
                         box.innerHTML = "";
                         const img = document.createElement("img");
@@ -342,6 +343,7 @@ function renderGuess(team, rowIndex) {
                     const img = document.createElement("img");
                     if (field === "sport") {
                         img.src = sportIcons[value] || ""; 
+                        img.classList.add("sport-icon");
                     } else {
                         img.src = leagueIcons[value] || ""; 
                     }
@@ -630,6 +632,7 @@ function submitGuess() {
                     const img = document.createElement("img");
                     if (field === "sport") {
                         img.src = sportIcons[value] || ""; 
+                        img.classList.add("sport-icon");
                     } else {
                         img.src = leagueIcons[value] || ""; 
                     }
